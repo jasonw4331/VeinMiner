@@ -33,6 +33,8 @@ class Main extends PluginBase implements Listener {
 		$blocksByTool = [];
 		/** @var Block $block */
 		foreach(BlockFactory::getBlockStatesArray() as $block) {
+			if(in_array($block->getName(), ["update!", "ate!upd", "reserved6", "", "Air", "Unknown", " Wooden Slab", "Upper  Wooden Slab"]))
+				continue;
 			//echo $block->getName()."\n";
 			$tool = $this->getToolTypeString($block->getToolType());
 			$state = false;
@@ -117,7 +119,27 @@ class Main extends PluginBase implements Listener {
 						break;
 						case "list":
 							if($sender->hasPermission("veinminer.command.blocklist.list")) {
-								// TODO
+								$pageNumber = 1;
+								if(!empty($args[3]) and is_numeric($args[3])) {
+									$pageNumber = (int) $args[3];
+									if ($pageNumber <= 0) {
+										$pageNumber = 1;
+									}
+								}elseif(!empty($args[3])){
+									return false;
+								}
+								/** @var bool[] $allBlocks */
+								$allBlocks = [];
+								foreach($this->blockList->getAll() as $tool => $blockArray) {
+									$allBlocks = array_merge($allBlocks, $blockArray);
+								}
+								ksort($allBlocks, SORT_NATURAL | SORT_FLAG_CASE);
+								/** @var bool[][] $allBlocks */
+								$allBlocks = array_chunk($allBlocks, $sender->getScreenLineHeight(), true);
+								$pageNumber = (int) min(count($allBlocks), $pageNumber);
+								foreach($allBlocks[$pageNumber - 1] as $name => $state) {
+									$sender->sendMessage($name . ": " . $state ? "on" : "off"); // TODO: $name is set but appears blank in message
+								}
 								return true;
 							}
 						break;
