@@ -1,0 +1,31 @@
+name: VeinMiner
+main: jasonwynn10\VeinMiner\Main
+version: 0.1.0
+api: 3.0.0
+description: "Your typical VeinMiner plugin, but for PocketMine!"
+author: "jasonwynn10"
+commands:
+  veinminer:
+    aliases: ["vm"]
+    usage: "/vm <toggle|blocklist|mode> [args]"
+    description: "The main VeinMiner command"
+    permission: veinminer.command
+permissions:
+  veinminer.command:
+    default: true
+    children:
+      veinminer.command.toggle:
+        default: true
+      veinminer.command.mode:
+        default: true
+      veinminer.command.blocklist:
+        default: true
+        children:
+          veinminer.command.blocklist.add:
+            default: op
+          veinminer.command.blocklist.remove:
+            default: op
+          veinminer.command.blocklist.list:
+            default: true
+  veinminer.use:
+    default: op
