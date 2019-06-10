@@ -138,7 +138,7 @@ class Main extends PluginBase implements Listener {
 								$allBlocks = array_chunk($allBlocks, $sender->getScreenLineHeight(), true);
 								$pageNumber = (int) min(count($allBlocks), $pageNumber);
 								foreach($allBlocks[$pageNumber - 1] as $name => $state) {
-									$sender->sendMessage($name . ": " . $state ? "on" : "off"); // TODO: $name is set but appears blank in message
+									$sender->sendMessage($name . ": " . ($state ? "on" : "off"));
 								}
 								return true;
 							}
