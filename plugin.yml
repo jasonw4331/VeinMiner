@@ -6,26 +6,58 @@ description: "Your typical VeinMiner plugin, but for PocketMine!"
 author: "jasonwynn10"
 commands:
   veinminer:
-    aliases: ["vm"]
-    usage: "/vm <toggle|blocklist|mode> [args]"
-    description: "The main VeinMiner command"
-    permission: veinminer.command
+    description: The main command for VeinMiner
+    usage: /<command> <version|reload|blocklist|toggle|pattern>
+    aliases: [vm]
 permissions:
-  veinminer.command:
+  veinminer.veinmine.*:
+    description: Allow the use of VeinMiner for all tool categories
     default: true
     children:
-      veinminer.command.toggle:
+      veinminer.veinmine.pickaxe:
         default: true
-      veinminer.command.mode:
+      veinminer.veinmine.axe:
         default: true
-      veinminer.command.blocklist:
+      veinminer.veinmine.shovel:
         default: true
-        children:
-          veinminer.command.blocklist.add:
-            default: op
-          veinminer.command.blocklist.remove:
-            default: op
-          veinminer.command.blocklist.list:
-            default: true
-  veinminer.use:
+      veinminer.veinmine.hoe:
+        default: true
+      veinminer.veinmine.shears:
+        default: true
+      veinminer.veinmine.hand:
+        default: true
+  veinminer.reload:
+    description: Allow the use of the '/veinminer reload' subcommand
     default: op
+  veinminer.toggle:
+    description: Allow the use of the '/veinminer toggle' subcommand
+    default: true
+  veinminer.pattern:
+    description: Allow the use of the '/veinminer pattern' subcommand
+    default: true
+  veinminer.blocklist.*:
+    description: Allow the use of the '/veinminer blocklist' subcommand
+    default: op
+    children:
+      veinminer.blocklist.add:
+        default: true
+      veinminer.blocklist.remove:
+        default: true
+      veinminer.blocklist.list.*:
+        default: true
+  veinminer.blocklist.list.*:
+    description: Allow the use of the '/veinminer blocklist list' subcommand
+    default: op
+    children:
+      veinminer.blocklist.list.pickaxe:
+        default: true
+      veinminer.blocklist.list.axe:
+        default: true
+      veinminer.blocklist.list.shovel:
+        default: true
+      veinminer.blocklist.list.hoe:
+        default: true
+      veinminer.blocklist.list.shears:
+        default: true
+      veinminer.blocklist.list.hand:
+        default: true
