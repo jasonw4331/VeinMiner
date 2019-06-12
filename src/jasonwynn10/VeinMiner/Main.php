@@ -64,7 +64,7 @@ class Main extends PluginBase implements Listener {
 					$newState = !$this->toggleSettings->getNested($sender->getName().".state", true);
 					$this->toggleSettings->setNested($sender->getName().".state", $newState);
 					$this->toggleSettings->save();
-					$sender->sendMessage("VeinMiner is now ". $newState ? "on" : "off");
+					$sender->sendMessage("VeinMiner is now ". ($newState ? "on" : "off"));
 					return true;
 				}
 			break;
