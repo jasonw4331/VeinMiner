@@ -1,7 +1,7 @@
 name: VeinMiner
 main: jasonwynn10\VeinMiner\Main
 version: 0.1.0
-api: 3.0.0
+api: 3.24.0
 description: "Your typical VeinMiner plugin, but for PocketMine!"
 author: "jasonwynn10"
 commands:
