@@ -1,0 +1,67 @@
+name: VeinMiner
+main: jasonwynn10\VeinMiner\Main
+version: 1.0.0-alpha1
+api: 4.0.0
+description: Aims to recreate the Forge mod, VeinMiner, in an efficient, flexible and feature-filled way
+author: jasonwynn10
+softdepend:
+  - Capital
+  - InfoAPI
+commands:
+  veinminer:
+    description: The main command for VeinMiner
+    usage: /<command> <version|reload|blocklist|toollist|toggle|pattern|mode>
+    aliases: [ vm ]
+    permission: veinminer.command
+permissions:
+  veinminer.veinmine.*:
+    description: Allow the use of VeinMiner for all tool categories
+    default: true
+
+  veinminer.reload:
+    description: Allow the use of the '/veinminer reload' subcommand
+    default: op
+  veinminer.toggle:
+    description: Allow the use of the '/veinminer toggle' subcommand
+    default: true
+  veinminer.mode:
+    description: Allow the use of the '/veinminer mode' subcommand
+    default: true
+  veinminer.pattern:
+    description: Allow the use of the '/veinminer pattern' subcommand
+    default: op
+  veinminer.free.*:
+    description: Grants a bypass to all VeinMiner debuffs and costs
+    default: false
+  veinminer.free.economy:
+    description: Grants a bypass to the VeinMiner cost. Only used if a Vault-supported economy is installed and the cost is greater than 0
+    default: true
+  veinminer.free.hunger:
+    description: Grants a bypass to the VeinMiner hunger debuff. Only used if hunger modifier is greater than 0
+    default: true
+
+  veinminer.blocklist.*:
+    description: Allow the use of the '/veinminer blocklist' subcommand
+    default: op
+  veinminer.blocklist.add:
+    default: true
+  veinminer.blocklist.remove:
+    default: true
+  veinminer.blocklist.list.*:
+    description: Allow the use of the '/veinminer blocklist list' subcommand
+    default: op
+
+  veinminer.toollist.*:
+    description: Allow the use of the '/veinminer toollist' subcommand
+    default: op
+  veinminer.toollist.add:
+    default: true
+  veinminer.toollist.remove:
+    default: true
+  veinminer.toollist.list.*:
+    description: Allow the use of the '/veinminer toollist list' subcommand
+    default: op
+
+  veinminer.client.reminded:
+    description: Exempt players from the client reminder message on join
+    default: false
