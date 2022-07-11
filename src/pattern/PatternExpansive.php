@@ -28,8 +28,8 @@ use Ramsey\Collection\Set;
  */
 final class PatternExpansive implements VeinMiningPattern{
 	use SingletonTrait{
-		reset as private reset; // don't let someone delete our instance
-		setInstance as private setInstance; // don't let someone set our instance
+		reset as private _reset; // don't let someone delete our instance
+		setInstance as private _setInstance; // don't let someone set our instance
 	}
 
 	private Set $buffer;
