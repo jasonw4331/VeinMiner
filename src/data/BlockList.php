@@ -35,12 +35,12 @@ final class BlockList implements IteratorAggregate,\Countable {
 	/**
 	 * Add a {@link BlockData} to this BlockList.
 	 *
-	 * @param VeinBlock|BlockIdentifier $block the data to add
+	 * @param VeinBlock|Block|BlockIdentifier $block the data to add
 	 *
 	 * @return void the VeinBlock added to this list
 	 */
-	public function add(VeinBlock|BlockIdentifier $block) : void {
-		if($block instanceof BlockIdentifier) {
+	public function add(VeinBlock|Block|BlockIdentifier $block) : void {
+		if($block instanceof BlockIdentifier or $block instanceof Block) {
 			$block = VeinBlock::get($block);
 		}
 		$this->blocks->add($block);
@@ -94,7 +94,7 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 * @return true if present, false otherwise
 	 */
 	public function containsExact(BlockIdentifier $data) : bool {
-		return $this->containsOnPredicate(static fn(VeinBlock $block) => $block->getBlockData()->equals($data));
+		return $this->containsOnPredicate(static fn(VeinBlock $block) => $block->getBlockData() === $data);
 	}
 
 	/**

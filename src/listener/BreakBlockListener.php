@@ -85,9 +85,8 @@ final class BreakBlockListener implements Listener{
 
 		$pattern = $this->plugin->getVeinMiningPattern();
 		$pattern->allocateBlocks($blocks, $originVeinBlock, $origin, $category, $toolTemplate, $algorithmConfig, $this->manager->getAliasFor($origin));
-		$blocks = $blocks->filter(function(Block $block) use ($player, $category, $toolTemplate, $algorithmConfig) : bool {
-			return !$block instanceof Air;
-		});
+		/** @var Set<Block> $blocks */
+		$blocks = $blocks->filter(static fn(Block $block) => !$block instanceof Air);
 		if(count($blocks) < 1){
 			return;
 		}

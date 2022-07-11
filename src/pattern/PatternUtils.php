@@ -13,7 +13,18 @@ final class PatternUtils{
 	private static $LIMITED_FACES = [];
 
 	public static function setup() : void {
-		self::$LIMITED_FACES = [];
+		self::$LIMITED_FACES = [
+			VBlockFace::UP(),
+			VBlockFace::DOWN(),
+			VBlockFace::NORTH(),
+			VBlockFace::SOUTH(),
+			VBlockFace::EAST(),
+			VBlockFace::WEST(),
+			VBlockFace::NORTH_EAST(),
+			VBlockFace::NORTH_WEST(),
+			VBlockFace::SOUTH_EAST(),
+			VBlockFace::SOUTH_WEST(),
+		];
 	}
 
 	/**

@@ -8,7 +8,6 @@ use pocketmine\block\Block;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\item\ItemBlock;
 use pocketmine\item\StringToItemParser;
-use function Sodium\compare;
 
 /**
  * Represents a block that may be vein mined. These blocks may or may not contain
@@ -41,9 +40,9 @@ abstract class VeinBlock{
 	 * has no specific data, this method will return the equivalent of
 	 * {@link Material#createBlockData()} with no additional block state data.
 	 *
-	 * @return Block the block data
+	 * @return BlockIdentifier the block data
 	 */
-	abstract public function getBlockData() : Block;
+	abstract public function getBlockData() : BlockIdentifier;
 
 	/**
 	 * Check whether or not the provided block is encapsulated by this VeinBlock. If
@@ -79,11 +78,11 @@ abstract class VeinBlock{
 	 * @return true if wildcard, false otherwise
 	 */
 	public function isWildcard() : bool {
-		return true;
+		return false;
 	}
 
 	public function compareTo(VeinBlock $other) : int {
-		return compare($this->asDataString(), $other->asDataString());
+		return \strcmp($this->asDataString(), $other->asDataString());
 	}
 
 	/**
@@ -93,8 +92,8 @@ abstract class VeinBlock{
 	 *
 	 * @return VeinBlock the VeinBlock instance
 	 */
-	public static function get(Block|BlockIdentifier $data) : VeinBlock{
-		return BlockCache::$MATERIAL->getOrCache($data, VeinBlockDatable::class);
+	public static function get(Block|BlockIdentifier $data) : VeinBlock {
+		return BlockCache::MATERIAL()->getOrCache($data, new VeinBlockDatable($data));
 	}
 
 	/**
@@ -124,7 +123,7 @@ abstract class VeinBlock{
 
 		//$specificData = isset($matches[1]);
 
-		$data = StringToItemParser::getInstance()->parse($matches[1]);
+		$data = StringToItemParser::getInstance()->parse($value);
 
 		if(!$data instanceof ItemBlock) {
 			return null;

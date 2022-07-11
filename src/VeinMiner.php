@@ -30,7 +30,7 @@ final class VeinMiner extends PluginBase implements Listener {
 		setInstance as private _setInstance; // don't let someone set our instance
 	}
 
-	public static string $BLOCK_DATA_PATTERN = '/(?:[\w:]+)(?:\[(.+=.+)+\])*/gi';
+	public static string $BLOCK_DATA_PATTERN = '/(?:[\w:]+)(?:\[(.+=.+)+\])*/i';
 
 	private VeinMinerManager $manager;
 	private PatternRegistry $patternRegistry;
