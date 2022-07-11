@@ -14,7 +14,7 @@ final class PatternRegistry{
 	 * @param VeinMiningPattern $pattern the pattern to register
 	 */
 	public function registerPattern(VeinMiningPattern $pattern) : void {
-		$this->patterns[$pattern->getKey()] = $pattern;
+		$this->patterns[(string)$pattern->getKey()] = $pattern;
 	}
 
 	/**
