@@ -8,7 +8,6 @@ use jasonwynn10\VeinMiner\tool\ToolCategory;
 use jasonwynn10\VeinMiner\tool\ToolTemplateItemStack;
 use jasonwynn10\VeinMiner\utils\NamespacedKey;
 use jasonwynn10\VeinMiner\utils\VMConstants;
-use jasonwynn10\VeinMiner\VeinMiner;
 use pocketmine\block\Block;
 use pocketmine\command\Command;
 use pocketmine\command\CommandExecutor;

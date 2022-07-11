@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner;
+namespace jasonwynn10\VeinMiner\pattern;
 
 final class PatternRegistry{
 
