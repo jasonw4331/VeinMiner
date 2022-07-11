@@ -31,7 +31,9 @@ final class ToolCategory{
 	 * @param array<ToolTemplate>|null $tools the tools that apply to this category
 	 */
 	public function __construct(private string $id, private AlgorithmConfig $config, ?Blocklist $blockList = null, private array $tools = []){
-		if(isset(ToolCategory::$HAND)){
+		static $lock = true;
+		if(!isset(ToolCategory::$HAND) and $lock){
+			$lock = false;
 			ToolCategory::$HAND = new ToolCategory('Hand', VeinMiner::getInstance()->getVeinMinerManager()->getConfig()); // Hand uses the default config
 			ToolCategory::register(ToolCategory::$HAND);
 		}
