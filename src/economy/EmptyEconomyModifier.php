@@ -35,9 +35,7 @@ final class EmptyEconomyModifier implements EconomyModifier{
 	/**
 	 * @inheritDoc
 	 */
-	public function charge(Player $player, AlgorithmConfig $config) : bool{
-		return true;
-	}
+	public function charge(Player $player, AlgorithmConfig $config) : void {}
 
 	/**
 	 * Get an instance of the empty economy modifier.
