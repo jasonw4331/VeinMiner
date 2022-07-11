@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace jasonwynn10\VeinMiner;
 
-use Ds\Set;
 use jasonwynn10\VeinMiner\data\AlgorithmConfig;
 use jasonwynn10\VeinMiner\data\block\VeinBlock;
 use jasonwynn10\VeinMiner\data\MaterialAlias;
@@ -11,6 +10,7 @@ use jasonwynn10\VeinMiner\tool\ToolCategory;
 use jasonwynn10\VeinMiner\tool\ToolTemplate;
 use jasonwynn10\VeinMiner\utils\NamespacedKey;
 use pocketmine\block\Block;
+use Ramsey\Collection\Set;
 
 /**
  * Represents a mining algorithm capable of allocating which blocks should be broken by VeinMiner

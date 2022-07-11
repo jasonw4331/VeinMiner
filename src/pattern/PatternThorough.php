@@ -6,14 +6,13 @@ namespace jasonwynn10\VeinMiner\pattern;
 use jasonwynn10\VeinMiner\data\AlgorithmConfig;
 use jasonwynn10\VeinMiner\data\block\VeinBlock;
 use jasonwynn10\VeinMiner\data\MaterialAlias;
-use jasonwynn10\VeinMiner\PatternUtils;
 use jasonwynn10\VeinMiner\tool\ToolCategory;
 use jasonwynn10\VeinMiner\tool\ToolTemplate;
 use jasonwynn10\VeinMiner\utils\NamespacedKey;
 use jasonwynn10\VeinMiner\VeinMiner;
-use jasonwynn10\VeinMiner\VeinMiningPattern;
 use pocketmine\block\Block;
 use pocketmine\utils\SingletonTrait;
+use Ramsey\Collection\Set;
 
 /**
  * A {@link VeinMiningPattern} implementation that "pulsates" from the origin outwards. Every
@@ -30,46 +29,49 @@ use pocketmine\utils\SingletonTrait;
  */
 final class PatternThorough implements VeinMiningPattern{
 	use SingletonTrait{
-		reset as private reset; // don't let someone delete our instance
-		setInstance as private setInstance; // don't let someone set our instance
+		reset as private _reset; // don't let someone delete our instance
+		setInstance as private _setInstance; // don't let someone set our instance
 	}
 
-	/** @var Block[] $blockBuffer */
-	private array $blockBuffer = [];
+	/** @var Set<Block> $blockBuffer */
+	private Set $blockBuffer;
 	private NamespacedKey $key;
 
 	private function __construct(){
 		$this->key = new NamespacedKey(VeinMiner::getInstance(), 'thorough');
+		$this->blockBuffer = new Set(Block::class);
 	}
 
-	public function allocateBlocks(array &$blocks, VeinBlock $type, Block $origin, ToolCategory $category, ?ToolTemplate $template, AlgorithmConfig $algorithmConfig, ?MaterialAlias $alias = null) : void{
+	public function allocateBlocks(Set $blocks, VeinBlock $type, Block $origin, ToolCategory $category, ?ToolTemplate $template, AlgorithmConfig $algorithmConfig, ?MaterialAlias $alias = null) : void{
 		$maxVeinSize = $algorithmConfig->getMaxVeinSize();
 		$facesToMine = PatternUtils::getFacesToMine($algorithmConfig);
 
 		while(count($blocks) < $maxVeinSize){
-			$trackedBlocks = \SplFixedArray::fromArray($blocks, false);
-			while($trackedBlocks->valid() && count($blocks) + count($this->blockBuffer) < $maxVeinSize){
+			$trackedBlocks = new \CachingIterator($blocks->getIterator());
+			while($trackedBlocks->hasNext() && $blocks->count() + $this->blockBuffer->count() < $maxVeinSize){
 				$trackedBlocks->next();
 				$current = $trackedBlocks->current();
 				foreach($facesToMine as $face){
-					if(count($blocks) + count($this->blockBuffer) >= $maxVeinSize){
+					if($blocks->count() + $this->blockBuffer->count() >= $maxVeinSize){
 						break;
 					}
 					$nextBlock = $face->getRelative($current);
-					if(in_array($nextBlock, $blocks) || !PatternUtils::isOfType($type, $origin, $alias, $nextBlock)){
+					if($blocks->contains($nextBlock) || !PatternUtils::isOfType($type, $origin, $alias, $nextBlock)){
 						continue;
 					}
 
-					$this->blockBuffer[] = $nextBlock;
+					$this->blockBuffer->add($nextBlock);
 				}
 			}
 
-			if(count($this->blockBuffer) === 0) {
+			if($this->blockBuffer->count() === 0) {
 				break;
 			}
 
-			array_push($blocks, ...$this->blockBuffer);
-			$this->blockBuffer = [];
+			foreach($this->blockBuffer as $block){
+				$blocks->add($block);
+			}
+			$this->blockBuffer->clear();
 		}
 	}
 

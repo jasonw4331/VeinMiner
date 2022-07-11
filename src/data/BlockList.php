@@ -3,10 +3,11 @@ declare(strict_types=1);
 
 namespace jasonwynn10\VeinMiner\data;
 
-use Ds\Set;
 use IteratorAggregate;
 use jasonwynn10\VeinMiner\data\block\VeinBlock;
+use pocketmine\block\Block;
 use pocketmine\block\BlockIdentifier;
+use Ramsey\Collection\Set;
 
 /**
  * Represents a list of blocks and states (see {@link VeinBlock}).
@@ -25,9 +26,9 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 * @param BlockList ...$lists the block lists whose values should be included
 	 */
 	public function __construct(BlockList ...$lists){
-        $this->blocks = new Set();
+        $this->blocks = new Set(VeinBlock::class);
 		foreach($lists as $list) {
-			$this->blocks->merge($list);
+			$this->blocks = $this->blocks->merge($list->blocks);
 		}
 	}
 

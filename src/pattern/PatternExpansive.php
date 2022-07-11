@@ -9,8 +9,10 @@ use jasonwynn10\VeinMiner\data\MaterialAlias;
 use jasonwynn10\VeinMiner\tool\ToolCategory;
 use jasonwynn10\VeinMiner\tool\ToolTemplate;
 use jasonwynn10\VeinMiner\utils\NamespacedKey;
+use jasonwynn10\VeinMiner\VeinMiner;
 use pocketmine\block\Block;
 use pocketmine\utils\SingletonTrait;
+use Ramsey\Collection\Set;
 
 /**
  * A {@link VeinMiningPattern} implementation that "expands" to search for similar blocks. Using the
@@ -30,46 +32,52 @@ final class PatternExpansive implements VeinMiningPattern{
 		setInstance as private setInstance; // don't let someone set our instance
 	}
 
-	private array $buffer = [];
-	private array $recent = [];
+	private Set $buffer;
+	private Set $recent;
 	private NamespacedKey $key;
 
 	private function __construct(){
 		$this->key = new NamespacedKey(VeinMiner::getInstance(), 'expansive');
+		$this->buffer = new Set(Block::class);
+		$this->recent = new Set(Block::class);
 	}
 
-	public function allocateBlocks(array &$blocks, VeinBlock $type, Block $origin, ToolCategory $category, ?ToolTemplate $template, AlgorithmConfig $algorithmConfig, ?MaterialAlias $alias = null) : void{
-		$this->recent[] = $origin; // For first iteration
+	public function allocateBlocks(Set $blocks, VeinBlock $type, Block $origin, ToolCategory $category, ?ToolTemplate $template, AlgorithmConfig $algorithmConfig, ?MaterialAlias $alias = null) : void{
+		$this->recent->add($origin); // For first iteration
 
 		$maxVeinSize = $algorithmConfig->getMaxVeinSize();
 		$facesToMine = PatternUtils::getFacesToMine($algorithmConfig);
 
-		while(count($blocks) < $maxVeinSize) {
+		while($blocks->count() < $maxVeinSize) {
 			foreach($this->recent as $current) {
 				foreach($facesToMine as $face) {
 					$relative = $face->getRelative($current);
-					if(in_array($relative, $blocks, true) || !PatternUtils::isOfType($type, $origin, $alias, $relative)) {
+
+					if($blocks->contains($relative) || !PatternUtils::isOfType($type, $origin, $alias, $relative)) {
 						continue;
 					}
 
-					if(count($blocks) + count($this->buffer) >= $maxVeinSize) {
+					if($blocks->count() + $this->buffer->count() >= $maxVeinSize) {
 						continue 2;
 					}
 
-					$this->buffer[] = $relative;
+					$this->buffer->add($relative);
 				}
 			}
 
-			if(count($this->buffer) === 0) {
+			if($this->buffer->count() === 0) {
 				break;
 			}
 
-			$this->recent = $this->buffer;
-			array_push($blocks, ...$this->buffer);
-			$this->buffer = [];
+			$this->recent->clear();
+			foreach($this->buffer as $block) {
+				$this->recent->add($block);
+				$blocks->add($block);
+			}
+			$this->buffer->clear();
 		}
 
-		$this->recent = [];
+		$this->recent->clear();
 	}
 
 	public function getKey() : NamespacedKey{

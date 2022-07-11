@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace jasonwynn10\VeinMiner\listener;
 
-use Ds\Set;
 use jasonwynn10\VeinMiner\api\VeinMinerManager;
 use jasonwynn10\VeinMiner\data\PlayerPreferences;
 use jasonwynn10\VeinMiner\tool\ToolCategory;
@@ -22,6 +21,7 @@ use pocketmine\item\Tool;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use pocketmine\world\sound\ItemBreakSound;
+use Ramsey\Collection\Set;
 
 final class BreakBlockListener implements Listener{
 
@@ -77,7 +77,7 @@ final class BreakBlockListener implements Listener{
 		}
 
 		// TIME TO VEINMINE
-		$blocks = new Set($origin);
+		$blocks = new Set(Block::class, $origin);
 		$originVeinBlock = $this->manager->getVeinBlockFromBlockList($originBlockData, $category);
 		if($originVeinBlock === null){
 			return;

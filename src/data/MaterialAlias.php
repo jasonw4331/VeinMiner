@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace jasonwynn10\VeinMiner\data;
 
-use Ds\Set;
 use IteratorAggregate;
 use jasonwynn10\VeinMiner\data\block\VeinBlock;
 use pocketmine\block\Air;
 use pocketmine\block\Block;
 use pocketmine\block\BlockIdentifier;
+use Ramsey\Collection\Set;
 
 final class MaterialAlias implements IteratorAggregate{
 
@@ -21,7 +21,7 @@ final class MaterialAlias implements IteratorAggregate{
 	 * @param VeinBlock ...$blocks the blocks to alias
 	 */
 	public function __construct(VeinBlock ...$blocks){
-		$this->blocks = new Set($blocks);
+		$this->blocks = new Set(VeinBlock::class, $blocks);
 	}
 
 	/**

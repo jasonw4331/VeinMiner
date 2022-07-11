@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace jasonwynn10\VeinMiner\data;
 
-use Ds\Set;
 use jasonwynn10\VeinMiner\api\ActivationStrategy;
 use jasonwynn10\VeinMiner\tool\ToolCategory;
 use jasonwynn10\VeinMiner\VeinMiner;
@@ -11,6 +10,7 @@ use pocketmine\player\IPlayer;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\utils\Filesystem;
+use Ramsey\Collection\Set;
 use Webmozart\PathUtil\Path;
 
 final class PlayerPreferences{
@@ -18,13 +18,14 @@ final class PlayerPreferences{
 	private static array $CACHE = [];
 
 	private ActivationStrategy $activationStrategy;
+	/** @var Set<ToolCategory> $disabledCategories */
 	private Set $disabledCategories;
 
 	private bool $dirty = false;
 
 	public function __construct(private string $player){
 		$this->activationStrategy = ActivationStrategy::getDefaultActivationStrategy();
-		$this->disabledCategories = new Set();
+		$this->disabledCategories = new Set(ToolCategory::class);
 	}
 
 	/**

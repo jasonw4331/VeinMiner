@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace jasonwynn10\VeinMiner\api;
 
-use Ds\Set;
 use jasonwynn10\VeinMiner\data\AlgorithmConfig;
 use jasonwynn10\VeinMiner\data\block\VeinBlock;
 use jasonwynn10\VeinMiner\data\BlockList;
@@ -24,6 +23,7 @@ use pocketmine\player\GameMode;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use pocketmine\world\Position;
+use Ramsey\Collection\Set;
 
 final class VeinMinerManager{
 
@@ -42,8 +42,8 @@ final class VeinMinerManager{
 
 	public function __construct(private VeinMiner $plugin){
 		$this->globalBlockList = new BlockList();
-		$this->aliases = new Set();
-		$this->disabledGameModes = new Set();
+		$this->aliases = new Set(MaterialAlias::class);
+		$this->disabledGameModes = new Set(GameMode::class);
 		$this->config = new AlgorithmConfig($plugin->getConfig()->getAll());
 	}
 
