@@ -1,9 +1,11 @@
 name: VeinMiner
-main: jasonwynn10\VeinMiner\Main
+main: jasonwynn10\VeinMiner\VeinMiner
+src-namespace-prefix: jasonwynn10\VeinMiner
 version: 1.0.0-alpha1
 api: 4.0.0
 description: Aims to recreate the Forge mod, VeinMiner, in an efficient, flexible and feature-filled way
 author: jasonwynn10
+load: STARTUP
 softdepend:
   - Capital
   - InfoAPI
@@ -12,7 +14,7 @@ commands:
     description: The main command for VeinMiner
     usage: /<command> <version|reload|blocklist|toollist|toggle|pattern|mode>
     aliases: [ vm ]
-    permission: veinminer.command
+    permission: veinminer.reload;veinminer.toggle;veinminer.mode;veinminer.pattern;veinminer.blocklist.*;veinminer.toollist.*
 permissions:
   veinminer.veinmine.*:
     description: Allow the use of VeinMiner for all tool categories
@@ -61,7 +63,3 @@ permissions:
   veinminer.toollist.list.*:
     description: Allow the use of the '/veinminer toollist list' subcommand
     default: op
-
-  veinminer.client.reminded:
-    description: Exempt players from the client reminder message on join
-    default: false
