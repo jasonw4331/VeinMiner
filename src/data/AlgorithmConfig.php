@@ -21,7 +21,7 @@ final class AlgorithmConfig{
 		$this->maxVeinSize = ($provided[VMConstants::CONFIG_MAX_VEIN_SIZE] ?? $defaultValues?->maxVeinSize) ?? $this->maxVeinSize;
 		$this->cost = ($provided[VMConstants::CONFIG_COST] ?? $defaultValues?->cost) ?? $this->cost;
 
-		$disabledWorlds = $provided[VMConstants::CONFIG_DISABLED_WORLDS];
+		$disabledWorlds = $provided[VMConstants::CONFIG_DISABLED_WORLDS] ?? [];
 		if(count($disabledWorlds) < 1 and $defaultValues !== null) {
 			$this->disabledWorlds = $defaultValues->disabledWorlds;
 		}
