@@ -26,8 +26,8 @@ use Webmozart\PathUtil\Path;
 
 final class VeinMiner extends PluginBase implements Listener {
 	use SingletonTrait {
-		reset as private reset; // don't let someone delete our instance
-		setInstance as private setInstance; // don't let someone set our instance
+		reset as private _reset; // don't let someone delete our instance
+		setInstance as private _setInstance; // don't let someone set our instance
 	}
 
 	public static string $BLOCK_DATA_PATTERN = '/(?:[\w:]+)(?:\[(.+=.+)+\])*/gi';
@@ -42,7 +42,7 @@ final class VeinMiner extends PluginBase implements Listener {
 	private string $playerDataDirectory;
 
 	protected function onLoad() : void {
-		self::setInstance($this);
+		self::_setInstance($this);
 	}
 
 	protected function onEnable() : void {
