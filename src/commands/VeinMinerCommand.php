@@ -24,8 +24,6 @@ use pocketmine\utils\TextFormat;
 final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 	use PluginOwnedTrait;
 
-	public function __construct(private VeinMiner $owningPlugin){}
-
 	/**
 	 * @inheritDoc
 	 */
