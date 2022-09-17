@@ -78,7 +78,7 @@ final class VeinMiner extends PluginBase implements Listener {
 			$this->getLogger()->debug($this->economyModifier->hasEconomyPlugin() ? 'Economy found! Hooked successfully.' : 'Cancelled. No economy plugin found.');
 		}else{
 			$this->getLogger()->debug('No economy plugin found. Economy support suspended');
-			$this->economyModifier = EmptyEconomyModifier::get();
+			$this->economyModifier = EmptyEconomyModifier::getInstance();
 		}
 
 		// load blocks to the veinable list

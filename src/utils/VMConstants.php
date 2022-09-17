@@ -39,15 +39,11 @@ final class VMConstants{
     public CONST PERMISSION_BLOCKLIST_ADD = "veinminer.blocklist.add";
     public CONST PERMISSION_BLOCKLIST_REMOVE = "veinminer.blocklist.remove";
     public CONST PERMISSION_BLOCKLIST_LIST = "veinminer.blocklist.list";
-    public CONST PERMISSION_TOOLLIST = "veinminer.toollist.add";
     public CONST PERMISSION_TOOLLIST_ADD = "veinminer.toollist.add";
     public CONST PERMISSION_TOOLLIST_REMOVE = "veinminer.toollist.remove";
     public CONST PERMISSION_TOOLLIST_LIST = "veinminer.toollist.list";
 
     // Dynamic permission nodes
-    public CONST PERMISSION_DYNAMIC_LIST_ADD = "veinminer.%s.list";
-    public CONST PERMISSION_DYNAMIC_LIST_REMOVE = "veinminer.%s.list";
-    public CONST PERMISSION_DYNAMIC_LIST_LIST = "veinminer.%s.list";
     public CONST PERMISSION_DYNAMIC_VEINMINE = "veinminer.veinmine.%s";
 
 	private function __construct(){}

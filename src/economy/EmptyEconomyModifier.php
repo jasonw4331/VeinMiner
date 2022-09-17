@@ -5,6 +5,7 @@ namespace jasonwynn10\VeinMiner\economy;
 
 use jasonwynn10\VeinMiner\data\AlgorithmConfig;
 use pocketmine\player\Player;
+use pocketmine\utils\SingletonTrait;
 
 /**
  * An implementation of {@link EconomyModifier} with no effect on the player.
@@ -13,8 +14,7 @@ use pocketmine\player\Player;
  * @author Parker Hawke - 2008Choco
  */
 final class EmptyEconomyModifier implements EconomyModifier{
-
-	private static EmptyEconomyModifier $instance;
+	use SingletonTrait;
 
 	private function __construct(){}
 
@@ -36,13 +36,4 @@ final class EmptyEconomyModifier implements EconomyModifier{
 	 * @inheritDoc
 	 */
 	public function charge(Player $player, AlgorithmConfig $config) : void {}
-
-	/**
-	 * Get an instance of the empty economy modifier.
-	 *
-	 * @return EmptyEconomyModifier this instance
-	 */
-	public static function get() : EmptyEconomyModifier{
-		return self::$instance ??= new EmptyEconomyModifier();
-	}
 }
