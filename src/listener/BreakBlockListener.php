@@ -147,7 +147,7 @@ final class BreakBlockListener implements Listener{
 			}
 		}
 		if($this->plugin->getConfig()->get(VMConstants::CONFIG_COLLECT_ITEMS_AT_SOURCE, true) === true)
-			$event->setDropsVariadic(...array_merge($event->getDrops(), $drops));
+			$event->setDropsVariadic(...$event->getDrops(), ...$drops);
 
 		// Remove applied metadata
 		$this->manager->removePlayerVeinMining($player);
