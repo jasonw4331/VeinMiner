@@ -51,7 +51,7 @@ final class PatternExpansive implements VeinMiningPattern{
 		while($blocks->count() < $maxVeinSize) {
 			foreach($this->recent as $current) {
 				foreach($facesToMine as $face) {
-					$relative = $face->getRelative($current);
+					$relative = $face->getRelative($current->getPosition());
 
 					if($blocks->contains($relative) || !PatternUtils::isOfType($type, $origin, $alias, $relative)) {
 						continue;

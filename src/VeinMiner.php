@@ -36,7 +36,7 @@ final class VeinMiner extends PluginBase implements Listener {
 	private PatternRegistry $patternRegistry;
 	private EconomyModifier $economyModifier;
 
-	private ?VeinMiningPattern $veinMiningPattern;
+	private ?VeinMiningPattern $veinMiningPattern = null;
 
 	private Config $categoriesConfig;
 	private string $playerDataDirectory;

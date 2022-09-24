@@ -53,7 +53,7 @@ final class ToolTemplateItemStack extends ToolTemplate{
 	}
 
 	public function matches(Item $item) : bool{
-		if ($item->equals($this->type)) {
+		if (!$item->equals($this->type, false)) {
 			return false;
 		}
 

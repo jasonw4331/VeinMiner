@@ -77,7 +77,7 @@ final class BreakBlockListener implements Listener{
 		}
 
 		// TIME TO VEINMINE
-		$blocks = new Set(Block::class, $origin);
+		$blocks = new Set(Block::class, [$origin]);
 		$originVeinBlock = $this->manager->getVeinBlockFromBlockList($originBlockData, $category);
 		if($originVeinBlock === null){
 			return;
@@ -93,7 +93,7 @@ final class BreakBlockListener implements Listener{
 
 		// Fire a new PlayerVeinMineEvent
 		$veinmineEvent = VMEventFactory::callPlayerVeinMineEvent($player, $originVeinBlock, $item, $category, $blocks, $pattern);
-		if(!$veinmineEvent->isCancelled() || $blocks->count() < 1){
+		if($veinmineEvent->isCancelled() || $blocks->count() < 1){
 			return;
 		}
 
