@@ -62,23 +62,14 @@ final class VBlockFace{
 		$this->Enum___construct($name);
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getXTranslation() : int{
 		return $this->xTranslation;
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getYTranslation() : int{
 		return $this->yTranslation;
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getZTranslation() : int{
 		return $this->zTranslation;
 	}
@@ -88,14 +79,14 @@ final class VBlockFace{
 	}
 
 	/* Block views:
-     *
-     *       Arial:               Front:
-     *
-     *   NW    N    NE          WU   UP    EU
-     *
-     *   W   BLOCK   E          W   BLOCK   E
-     *
-     *   SW    S    ES          WD  DOWN   ED
-     *
-     */
+	 *
+	 *       Arial:               Front:
+	 *
+	 *   NW    N    NE          WU   UP    EU
+	 *
+	 *   W   BLOCK   E          W   BLOCK   E
+	 *
+	 *   SW    S    ES          WD  DOWN   ED
+	 *
+	 */
 }

@@ -53,7 +53,7 @@ final class MaterialAlias implements IteratorAggregate{
 		if($block instanceof VeinBlock){
 			return $this->blocks->contains($block);
 		}elseif($block instanceof BlockIdentifier){
-			return count(array_filter($this->blocks->toArray(), static fn(VeinBlock $b) => $b->encapsulates($block))) > 0;
+			return \count(\array_filter($this->blocks->toArray(), static fn(VeinBlock $b) => $b->encapsulates($block))) > 0;
 		}
 		return !$block instanceof Air && $this->isAliased($block->getIdInfo());
 	}

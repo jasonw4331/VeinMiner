@@ -71,7 +71,7 @@ final class VeinMinerManager{
 	 */
 	public function getAllVeinMineableBlocks() : BlockList {
 		$categories = ToolCategory::getAll();
-		$lists = new \SplFixedArray(count($categories) + 1);
+		$lists = new \SplFixedArray(\count($categories) + 1);
 
 		$index = 0;
 		foreach ($categories as $category) {
@@ -139,10 +139,10 @@ final class VeinMinerManager{
 			return;
 		}
 
-		foreach (array_keys($blocklistSection) as $tool) {
+		foreach (\array_keys($blocklistSection) as $tool) {
 			$category = ToolCategory::get($tool);
 			if ($category === null) {
-				if (mb_strtolower($tool) !== 'all' && mb_strtolower($tool) !== 'hand') { // Special case for "all" and "hand". Don't show an error
+				if (\mb_strtolower($tool) !== 'all' && \mb_strtolower($tool) !== 'hand') { // Special case for "all" and "hand". Don't show an error
 					$this->plugin->getLogger()->warning("Attempted to create blocklist for the non-existent category, " . $tool . "... ignoring.");
 				}
 
@@ -190,7 +190,7 @@ final class VeinMinerManager{
 					continue;
 				}
 
-				if (is_string($tool)) {
+				if (\is_string($tool)) {
 					$type = StringToItemParser::getInstance()->parse($tool);
 					if ($type === null) {
 						$this->plugin->getLogger()->warning("Unknown tool of type \"" . $tool . "\" provided, ignoring...");
@@ -198,7 +198,7 @@ final class VeinMinerManager{
 					}
 
 					$template = new ToolTemplateItemStack($category, $type);
-				}elseif(is_array($tool)){
+				}elseif(\is_array($tool)){
 					// Material value
 					$item = $this->getMaterialKey($tool);
 					if ($item === null) {
@@ -210,15 +210,15 @@ final class VeinMinerManager{
 					$name = $tool['Name'];
 					$lore = $tool['Lore'];
 
-					if (is_string($name)) {
+					if (\is_string($name)) {
 						$item->setCustomName(TextFormat::colorize($name));
 					}
 
-					if (is_string($lore)) {
+					if (\is_string($lore)) {
 						$item->setLore([TextFormat::colorize($lore, '&')]);
-					} elseif (is_array($lore)) {
-						$loreList = array_map(static fn(string $s) => TextFormat::colorize($s), array_filter($lore, static fn($value) => is_string($value)));
-						if (count($loreList) < 1) {
+					} elseif (\is_array($lore)) {
+						$loreList = \array_map(static fn(string $s) => TextFormat::colorize($s), \array_filter($lore, static fn($value) => \is_string($value)));
+						if (\count($loreList) < 1) {
 							continue;
 						}
 
@@ -238,13 +238,13 @@ final class VeinMinerManager{
 
 		// Handle dynamic permissions
 		$categories = ToolCategory::getAll();
-		if (count($categories) >= 1) {
+		if (\count($categories) >= 1) {
 			$veinminePermissionParent = $this->getOrRegisterPermission("veinminer.veinmine.*");
 			$blocklistPermissionParent = $this->getOrRegisterPermission("veinminer.blocklist.list.*");
 			$toollistPermissionParent = $this->getOrRegisterPermission("veinminer.toollist.list.*");
 
 			foreach($categories as $category) {
-				$id = mb_strtolower($category->getId());
+				$id = \mb_strtolower($category->getId());
 
 				$permissionManager = PermissionManager::getInstance();
 				$root = $permissionManager->getPermission(DefaultPermissions::ROOT_OPERATOR);
@@ -358,7 +358,7 @@ final class VeinMinerManager{
 
 		foreach ($this->plugin->getConfig()->get(VMConstants::CONFIG_ALIASES) as $aliasList) {
 			$alias = new MaterialAlias();
-			foreach(explode(',', $aliasList) as $aliasState) {
+			foreach(\explode(',', $aliasList) as $aliasState) {
 				$block = VeinBlock::fromString($aliasState);
 				if($block === null){
 					$this->plugin->getLogger()->warning("Unknown block type (was it an item?) and/or block states for alias \"" . $aliasList . "\". Given: " . $aliasState);
@@ -383,7 +383,7 @@ final class VeinMinerManager{
 
 	private function getMaterialKey(array $map) : ?Item {
 		$possibleMapping = $map['Material'];
-		if (is_string($possibleMapping)) {
+		if (\is_string($possibleMapping)) {
 			return StringToItemParser::getInstance()->parse($possibleMapping);
 		}
 		foreach($map as $key => $entry) {
@@ -421,12 +421,12 @@ final class VeinMinerManager{
 
 	public function setBlockToBeVeinMined(Block $block, Block $origin) : void {
 		$pos = $block->getPosition();
-		$this->blockToBeVeinMined[$pos->x.':'.$pos->y.':'.$pos->z.':'.$pos->world->getFolderName()] = $origin->getPosition();
+		$this->blockToBeVeinMined[$pos->x . ':' . $pos->y . ':' . $pos->z . ':' . $pos->world->getFolderName()] = $origin->getPosition();
 	}
 
 	public function getBlockToBeVeinMinedOrigin(Block $block) : ?Position {
 		$pos = $block->getPosition();
-		$key = $pos->x.':'.$pos->y.':'.$pos->z.':'.$pos->world->getFolderName();
+		$key = $pos->x . ':' . $pos->y . ':' . $pos->z . ':' . $pos->world->getFolderName();
 		if(isset($this->blockToBeVeinMined[$key])){
 			return $this->blockToBeVeinMined[$key];
 		}
@@ -435,7 +435,7 @@ final class VeinMinerManager{
 
 	public function removeBlockToBeVeinMined($block) : void {
 		$pos = $block->getPosition();
-		$key = $pos->x.':'.$pos->y.':'.$pos->z.':'.$pos->world->getFolderName();
+		$key = $pos->x . ':' . $pos->y . ':' . $pos->z . ':' . $pos->world->getFolderName();
 		if(isset($this->blockToBeVeinMined[$key])){
 			unset($this->blockToBeVeinMined[$key]);
 		}

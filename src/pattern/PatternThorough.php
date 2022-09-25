@@ -46,8 +46,8 @@ final class PatternThorough implements VeinMiningPattern{
 		$maxVeinSize = $algorithmConfig->getMaxVeinSize();
 		$facesToMine = PatternUtils::getFacesToMine($algorithmConfig);
 
-		while(count($blocks) < $maxVeinSize){
-			$trackedBlocks = new \CachingIterator($blocks->getIterator());
+		while(\count($blocks) < $maxVeinSize){
+			$trackedBlocks = new \CachingIterator($blocks);
 			while($trackedBlocks->hasNext() && $blocks->count() + $this->blockBuffer->count() < $maxVeinSize){
 				$trackedBlocks->next();
 				$current = $trackedBlocks->current();

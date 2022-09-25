@@ -87,7 +87,7 @@ final class BreakBlockListener implements Listener{
 		$pattern->allocateBlocks($blocks, $originVeinBlock, $origin, $category, $toolTemplate, $algorithmConfig, $this->manager->getAliasFor($origin));
 		/** @var Set<Block> $blocks */
 		$blocks = $blocks->filter(static fn(Block $block) => !$block instanceof Air);
-		if(count($blocks) < 1){
+		if(\count($blocks) < 1){
 			return;
 		}
 
@@ -105,8 +105,8 @@ final class BreakBlockListener implements Listener{
 
 		// Actually destroying the allocated blocks
 		$maxDurability = $item instanceof Tool ? ($item->getMaxDurability() - ($this->plugin->getConfig()->get(VMConstants::CONFIG_REPAIR_FRIENDLY_VEINMINER, false) ? 1 : 0)) : 0;
-		$hungerModifier = max(0, $this->plugin->getConfig()->get(VMConstants::CONFIG_HUNGER_HUNGER_MODIFIER, 0)) * 0.025;
-		$minimumFoodLevel = max(0, $this->plugin->getConfig()->get(VMConstants::CONFIG_HUNGER_MINIMUM_FOOD_LEVEL, 0));
+		$hungerModifier = \max(0, $this->plugin->getConfig()->get(VMConstants::CONFIG_HUNGER_HUNGER_MODIFIER, 0)) * 0.025;
+		$minimumFoodLevel = \max(0, $this->plugin->getConfig()->get(VMConstants::CONFIG_HUNGER_MINIMUM_FOOD_LEVEL, 0));
 
 		$hungryMessage = $this->plugin->getConfig()->get(VMConstants::CONFIG_HUNGER_HUNGRY_MESSAGE, '');
 		if($hungryMessage !== ''){
@@ -158,7 +158,7 @@ final class BreakBlockListener implements Listener{
 		// VEINMINE - DONE
 	}
 
-	private function breakBlock(Player $player, Block $block): bool {
+	private function breakBlock(Player $player, Block $block) : bool {
 		$pos = $block->getPosition();
 
 		$player->removeCurrentWindow();
@@ -181,14 +181,14 @@ final class BreakBlockListener implements Listener{
 		return false;
 	}
 
-	private function applyHungerDebuff(Player $player, float $hungerModifier): void{
+	private function applyHungerDebuff(Player $player, float $hungerModifier) : void{
 		$foodLevel = $player->getHungerManager()->getFood();
 		$saturation = $player->getHungerManager()->getSaturation();
 		$exhaustion = $player->getHungerManager()->getExhaustion();
 
 		$exhaustion += $hungerModifier;
 		$exhaustion %= 4;
-		$saturation -= (int)(($exhaustion + $hungerModifier) / 4);
+		$saturation -= (int) (($exhaustion + $hungerModifier) / 4);
 
 		if($saturation < 0){
 			$foodLevel += $saturation;

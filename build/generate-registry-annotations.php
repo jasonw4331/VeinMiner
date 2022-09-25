@@ -23,21 +23,7 @@ declare(strict_types=1);
 
 namespace pocketmine\build\update_registry_annotations;
 
-use function basename;
-use function class_exists;
-use function count;
-use function dirname;
-use function file_get_contents;
-use function file_put_contents;
-use function implode;
-use function ksort;
-use function mb_strtoupper;
-use function preg_match;
-use function sprintf;
-use function str_replace;
-use const SORT_STRING;
-
-if(count($argv) !== 2){
+if(\count($argv) !== 2){
 	die("Provide a path to process");
 }
 
@@ -45,7 +31,7 @@ if(count($argv) !== 2){
  * @param object[] $members
  */
 function generateMethodAnnotations(string $namespaceName, array $members) : string{
-	$selfName = basename(__FILE__);
+	$selfName = \basename(__FILE__);
 	$lines = ["/**"];
 	$lines[] = " * This doc-block is generated automatically, do not modify it manually.";
 	$lines[] = " * This must be regenerated whenever registry members are added, removed or changed.";
@@ -67,51 +53,51 @@ function generateMethodAnnotations(string $namespaceName, array $members) : stri
 		}else{
 			$typehint = '\\' . $reflect->getName();
 		}
-		$accessor = mb_strtoupper($name);
-		$memberLines[$accessor] = sprintf($lineTmpl, $accessor, $typehint);
+		$accessor = \mb_strtoupper($name);
+		$memberLines[$accessor] = \sprintf($lineTmpl, $accessor, $typehint);
 	}
-	ksort($memberLines, SORT_STRING);
+	\ksort($memberLines, \SORT_STRING);
 
 	foreach($memberLines as $line){
 		$lines[] = $line;
 	}
 	$lines[] = " */";
-	return implode("\n", $lines);
+	return \implode("\n", $lines);
 }
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+require \dirname(__DIR__) . '/vendor/autoload.php';
 
 /** @var string $file */
 foreach(new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($argv[1], \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::CURRENT_AS_PATHNAME)) as $file){
-	if(!str_ends_with($file, ".php")){
+	if(!\str_ends_with($file, ".php")){
 		continue;
 	}
-	$contents = file_get_contents($file);
+	$contents = \file_get_contents($file);
 	if($contents === false){
 		throw new \RuntimeException("Failed to get contents of $file");
 	}
 
-	if(preg_match("/(*ANYCRLF)^namespace (.+);$/m", $contents, $matches) !== 1 || preg_match('/(*ANYCRLF)^((final|abstract)\s+)?class /m', $contents) !== 1){
+	if(\preg_match("/(*ANYCRLF)^namespace (.+);$/m", $contents, $matches) !== 1 || \preg_match('/(*ANYCRLF)^((final|abstract)\s+)?class /m', $contents) !== 1){
 		continue;
 	}
-	$shortClassName = basename($file, ".php");
+	$shortClassName = \basename($file, ".php");
 	$className = $matches[1] . "\\" . $shortClassName;
-	if(!class_exists($className)){
+	if(!\class_exists($className)){
 		continue;
 	}
 	$reflect = new \ReflectionClass($className);
 	$docComment = $reflect->getDocComment();
-	if($docComment === false || preg_match("/(*ANYCRLF)^\s*\*\s*@generate-registry-docblock$/m", $docComment) !== 1){
+	if($docComment === false || \preg_match("/(*ANYCRLF)^\s*\*\s*@generate-registry-docblock$/m", $docComment) !== 1){
 		continue;
 	}
 	echo "Found registry in $file\n";
 
 	$replacement = generateMethodAnnotations($matches[1], $className::getAll());
 
-	$newContents = str_replace($docComment, $replacement, $contents);
+	$newContents = \str_replace($docComment, $replacement, $contents);
 	if($newContents !== $contents){
 		echo "Writing changed file $file\n";
-		file_put_contents($file, $newContents);
+		\file_put_contents($file, $newContents);
 	}else{
 		echo "No changes made to file $file\n";
 	}

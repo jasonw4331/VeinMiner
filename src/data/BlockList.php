@@ -26,7 +26,7 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 * @param BlockList ...$lists the block lists whose values should be included
 	 */
 	public function __construct(BlockList ...$lists){
-        $this->blocks = new Set(VeinBlock::class);
+		$this->blocks = new Set(VeinBlock::class);
 		foreach($lists as $list) {
 			$this->blocks = $this->blocks->merge($list->blocks);
 		}
@@ -40,7 +40,7 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 * @return void the VeinBlock added to this list
 	 */
 	public function add(VeinBlock|Block|BlockIdentifier $block) : void {
-		if($block instanceof BlockIdentifier or $block instanceof Block) {
+		if($block instanceof BlockIdentifier || $block instanceof Block) {
 			$block = VeinBlock::get($block);
 		}
 		$this->blocks->add($block);

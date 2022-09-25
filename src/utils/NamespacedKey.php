@@ -35,17 +35,17 @@ final class NamespacedKey{
 	 * @param string $key the key to create
 	 */
 	public function __construct(Plugin|string $plugin, private string $key){
-		if(is_string($plugin) and preg_match(self::VALID_NAMESPACE, $plugin) === 0){
+		if(\is_string($plugin) && \preg_match(self::VALID_NAMESPACE, $plugin) === 0){
 			$this->namespace = $plugin;
 		}
-		$this->namespace = mb_strtolower($plugin->getName());
+		$this->namespace = \mb_strtolower($plugin->getName());
 
-		if(strlen($this->__toString()) > 256)
+		if(\strlen($this->__toString()) > 256)
 			throw new \OutOfBoundsException('NamespacedKey must be less than 256 characters');
 	}
 
 	public static function fromString(string $key, ?Plugin $defaultNamespace = null) : ?string {
-		if(str_contains($key, ":") and $defaultNamespace !== null){
+		if(\str_contains($key, ":") && $defaultNamespace !== null){
 			return $key;
 		}
 		return $defaultNamespace instanceof Plugin ? $defaultNamespace->getName() . ":" . $key : $key;

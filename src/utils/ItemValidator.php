@@ -24,6 +24,6 @@ final class ItemValidator{
 			return $category === ToolCategory::$HAND;
 		}
 
-		return count(array_filter($category->getTools(), static fn(ToolTemplate $template) => $template->matches($item))) > 0;
+		return \count(\array_filter($category->getTools(), static fn(ToolTemplate $template) => $template->matches($item))) > 0;
 	}
 }

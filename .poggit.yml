@@ -3,4 +3,13 @@ projects:
   VeinMiner:
     path: ""
     icon: "icon.png"
+    lint: false
+    excludeDirs:
+      - tests
+      - .github
+    excludeFiles:
+      - .php-cs-fixer.php
+      - .gitignore
+      - CONTRIBUTING.md
+      - SECURITY.md
 ...

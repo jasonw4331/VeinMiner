@@ -81,7 +81,7 @@ final class PlayerPreferences{
 		if($category !== null) {
 			return !$this->disabledCategories->contains($category);
 		}
-		return count($this->disabledCategories) === 0;
+		return \count($this->disabledCategories) === 0;
 	}
 
 	/**
@@ -194,13 +194,13 @@ final class PlayerPreferences{
 	 * @see VeinMiner#getPlayerDataDirectory()
 	 */
 	public function writeToFile(string $directory) : void{
-		if(!is_dir($directory)) {
+		if(!\is_dir($directory)) {
 			throw new \InvalidArgumentException("Provided directory is not a directory");
 		}
 		try{
 			FileSystem::safeFilePutContents(
-				Path::join($directory, $this->player.'.json'),
-				\json_encode($this->write([]), flags: \JSON_THROW_ON_ERROR)
+				Path::join($directory, $this->player . '.json'),
+				\json_encode($this->write([]), flags: JSON_THROW_ON_ERROR)
 			);
 		}catch(\JsonException|\RuntimeException $e){
 			VeinMiner::getInstance()->getLogger()->logException($e);
@@ -215,19 +215,19 @@ final class PlayerPreferences{
 	 * @see VeinMiner#getPlayerDataDirectory()
 	 */
 	public function readFromFile(string $directory) : void{
-		if(!is_dir($directory)) {
+		if(!\is_dir($directory)) {
 			throw new \InvalidArgumentException("Provided directory is not a directory");
 		}
-		$file = Path::join($directory, $this->player.'.json');
-		if(!file_exists($file)) {
+		$file = Path::join($directory, $this->player . '.json');
+		if(!\file_exists($file)) {
 			return;
 		}
 
 		try{
-			$this->read(\json_decode(file_get_contents($file), true, flags: \JSON_THROW_ON_ERROR));
+			$this->read(\json_decode(\file_get_contents($file), true, flags: \JSON_THROW_ON_ERROR));
 		}catch(\JsonException $e) {
-			VeinMiner::getInstance()->getLogger()->warning('Could not read player data for user '.$this->player.'. Invalid file format. Deleting...');
-			unlink($file);
+			VeinMiner::getInstance()->getLogger()->warning('Could not read player data for user ' . $this->player . '. Invalid file format. Deleting...');
+			\unlink($file);
 		}
 	}
 

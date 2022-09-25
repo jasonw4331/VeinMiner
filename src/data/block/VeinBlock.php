@@ -117,7 +117,7 @@ abstract class VeinBlock{
 		if($value === '*')
 			return static::wildcard();
 
-		if(preg_match_all(VeinMiner::$BLOCK_DATA_PATTERN, $value, $matches) === 0) {
+		if(\preg_match_all(VeinMiner::$BLOCK_DATA_PATTERN, $value, $matches) === 0) {
 			return null;
 		}
 

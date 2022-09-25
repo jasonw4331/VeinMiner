@@ -78,6 +78,6 @@ final class CapitalBasedEconomyModifier implements EconomyModifier{
 	 * @return true if economy is enabled, false otherwise
 	 */
 	public function hasEconomyPlugin() : bool{
-		return class_exists(Capital::class);
+		return \class_exists(Capital::class);
 	}
 }

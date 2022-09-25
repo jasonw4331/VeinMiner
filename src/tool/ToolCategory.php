@@ -32,13 +32,13 @@ final class ToolCategory{
 	 */
 	public function __construct(private string $id, private AlgorithmConfig $config, ?Blocklist $blockList = null, private array $tools = []){
 		static $lock = true;
-		if(!isset(ToolCategory::$HAND) and $lock){
+		if(!isset(ToolCategory::$HAND) && $lock){
 			$lock = false;
 			ToolCategory::$HAND = new ToolCategory('Hand', VeinMiner::getInstance()->getVeinMinerManager()->getConfig()); // Hand uses the default config
 			ToolCategory::register(ToolCategory::$HAND);
 		}
 
-		if(!preg_match(ToolCategory::VALID_ID, $id)){
+		if(!\preg_match(ToolCategory::VALID_ID, $id)){
 			throw new \InvalidArgumentException("Invalid tool category id: $id");
 		}
 
@@ -50,8 +50,6 @@ final class ToolCategory{
 
 	/**
 	 * Get the unique id of this tool category.
-	 *
-	 * @return string
 	 */
 	public function getId() : string{
 		return $this->id;
@@ -60,8 +58,6 @@ final class ToolCategory{
 	/**
 	 * Get the algorithm config for this tool category. This category should have precedence
 	 * over the global algorithm config.
-	 *
-	 * @return AlgorithmConfig
 	 */
 	public function getConfig() : AlgorithmConfig{
 		return $this->config;
@@ -73,7 +69,7 @@ final class ToolCategory{
 	 * @param ToolTemplate $template the template to add
 	 */
 	public function addTool(ToolTemplate $template) : void{
-		if(in_array($template, $this->tools)){
+		if(\in_array($template, $this->tools, true)){
 			return;
 		}
 
@@ -128,8 +124,6 @@ final class ToolCategory{
 
 	/**
 	 * Get the blocklist for this category.
-	 *
-	 * @return BlockList
 	 */
 	public function getBlockList() : BlockList{
 		return $this->blockList;
@@ -144,7 +138,7 @@ final class ToolCategory{
 	 * @return true if permission is granted, false otherwise
 	 */
 	public function hasPermission(Permissible $permissible) : bool{
-		return $permissible->hasPermission(str_replace('%s', mb_strtolower($this->id), VMConstants::PERMISSION_DYNAMIC_VEINMINE));
+		return $permissible->hasPermission(\str_replace('%s', \mb_strtolower($this->id), VMConstants::PERMISSION_DYNAMIC_VEINMINE));
 	}
 
 	public function equals(object $obj) : bool{
@@ -159,8 +153,8 @@ final class ToolCategory{
 	 * @return ToolCategory|null the tool category. null if none
 	 */
 	public static function get(Item|string $id) : ?ToolCategory{
-		if(is_string($id)){
-			return self::$CATEGORIES[mb_strtolower($id)] ?? null;
+		if(\is_string($id)){
+			return self::$CATEGORIES[\mb_strtolower($id)] ?? null;
 		}
 
 		if($id->isNull()){
@@ -184,7 +178,7 @@ final class ToolCategory{
 	 * @param ToolCategory $category the category to register
 	 */
 	public static function register(ToolCategory $category) : void{
-		self::$CATEGORIES[mb_strtolower($category->getId())] = $category;
+		self::$CATEGORIES[\mb_strtolower($category->getId())] = $category;
 	}
 
 	/**
@@ -219,7 +213,7 @@ final class ToolCategory{
 	 * @return int the amount of registered categories
 	 */
 	public static function getRegisteredAmount() : int{
-		return count(self::$CATEGORIES);
+		return \count(self::$CATEGORIES);
 	}
 
 	/**

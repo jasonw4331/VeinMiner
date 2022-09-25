@@ -57,23 +57,17 @@ final class ToolTemplateItemStack extends ToolTemplate{
 			return false;
 		}
 
-        if ($this->name != null && ($this->name != $item->getName())) {
+		if ($this->name != null && ($this->name != $item->getName())) {
 			return false;
 		}
 
-        return $this->lore === null || count(array_diff($this->lore, $item->getLore())) === 0;
+		return $this->lore === null || \count(\array_diff($this->lore, $item->getLore())) === 0;
 	}
 
-	/**
-	 * @return AlgorithmConfig|null
-	 */
 	public function getConfig() : ?AlgorithmConfig{
 		return $this->config;
 	}
 
-	/**
-	 * @return ToolCategory
-	 */
 	public function getCategory() : ToolCategory{
 		return $this->category;
 	}

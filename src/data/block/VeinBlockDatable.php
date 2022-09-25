@@ -52,18 +52,18 @@ class VeinBlockDatable extends VeinBlock{
 	}
 
 	public function equals(Object $obj) : bool{
-        if ($obj === $this) {
-            return true;
-        }
+		if ($obj === $this) {
+			return true;
+		}
 		if (!($obj instanceof VeinBlockDatable)) {
 			return false;
 		}
 
 		return $this->data->getIdInfo() === $obj->getBlockData();
-    }
+	}
 
-    public function toString() : string {
+	public function toString() : string {
 		$dataString = $this->asDataString();
-        return "{VeinBlockDatable:{\"Type\":\"" . $this->data->getName() . "\",\"Data\":\"" . mb_substr($dataString, mb_strpos($dataString, '[')) . "\"}}";
-    }
+		return "{VeinBlockDatable:{\"Type\":\"" . $this->data->getName() . "\",\"Data\":\"" . \mb_substr($dataString, \mb_strpos($dataString, '[')) . "\"}}";
+	}
 }

@@ -35,7 +35,7 @@ final class BlockCache{
 	public function getOrCache(Block|BlockIdentifier $type, VeinBlock $defaultSupplier) : VeinBlock {
 		if($type instanceof Block)
 			$type = $type->getIdInfo();
-		return $this->cached->putIfAbsent(spl_object_hash($type), $defaultSupplier) ?? $defaultSupplier;
+		return $this->cached->putIfAbsent(\spl_object_hash($type), $defaultSupplier) ?? $defaultSupplier;
 	}
 
 	static function clear() : void {

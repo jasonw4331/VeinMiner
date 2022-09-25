@@ -22,7 +22,7 @@ final class AlgorithmConfig{
 		$this->cost = ($provided[VMConstants::CONFIG_COST] ?? $defaultValues?->cost) ?? $this->cost;
 
 		$disabledWorlds = $provided[VMConstants::CONFIG_DISABLED_WORLDS] ?? [];
-		if(count($disabledWorlds) < 1 and $defaultValues !== null) {
+		if(\count($disabledWorlds) < 1 && $defaultValues !== null) {
 			$this->disabledWorlds = $defaultValues->disabledWorlds;
 		}
 
@@ -150,7 +150,7 @@ final class AlgorithmConfig{
 	 * @return AlgorithmConfig this instance. Allows for chained method calls
 	 */
 	public function unDisabledWorld(World $world) : AlgorithmConfig{
-		$this->disabledWorlds = array_diff($this->disabledWorlds, [$world->getId()]);
+		$this->disabledWorlds = \array_diff($this->disabledWorlds, [$world->getId()]);
 		return $this;
 	}
 
@@ -162,7 +162,7 @@ final class AlgorithmConfig{
 	 * @return true if disabled, false otherwise
 	 */
 	public function isDisabledWorld(World $world) : bool{
-		return in_array($world->getId(), $this->disabledWorlds);
+		return \in_array($world->getId(), $this->disabledWorlds, true);
 	}
 
 	/**
@@ -181,32 +181,32 @@ final class AlgorithmConfig{
 		$cost = $raw[VMConstants::CONFIG_COST];
 		$disabledWorlds = $raw[VMConstants::CONFIG_DISABLED_WORLDS];
 
-		if (is_bool($repairFriendlyVeinMiner)) {
+		if (\is_bool($repairFriendlyVeinMiner)) {
 			$this->repairFriendly($repairFriendlyVeinMiner);
 		}
-		if (is_bool($includeEdges)) {
+		if (\is_bool($includeEdges)) {
 			$this->includeEdges($includeEdges);
 		}
-		if (is_int($maxVeinSize)) {
-			$this->maxVeinSize(max($maxVeinSize, 1));
+		if (\is_int($maxVeinSize)) {
+			$this->maxVeinSize(\max($maxVeinSize, 1));
 		}
-		if (is_numeric($cost)) {
-			$this->cost(max($cost, 0.0));
+		if (\is_numeric($cost)) {
+			$this->cost(\max($cost, 0.0));
 		}
-		if (is_array($disabledWorlds)) {
+		if (\is_array($disabledWorlds)) {
 			foreach($disabledWorlds as $world) {
-				if(is_string($world)) {
+				if(\is_string($world)) {
 					$world = Server::getInstance()->getWorldManager()->getWorldByName($world);
 				}
 				if($world instanceof World) {
 					$this->disabledWorld($world);
 				}
 			}
-        }
+		}
 	}
 
 	public function equals(object $obj) : bool {
-		return $obj === $this || ($obj instanceof AlgorithmConfig && $obj->isRepairFriendly() === $this->repairFriendly && $obj->includeEdges === $this->includeEdges && $obj->getMaxVeinSize() === $this->maxVeinSize && $obj->getCost() === $this->cost && count(array_diff($this->disabledWorlds, $obj->disabledWorlds)) === 0);
+		return $obj === $this || ($obj instanceof AlgorithmConfig && $obj->isRepairFriendly() === $this->repairFriendly && $obj->includeEdges === $this->includeEdges && $obj->getMaxVeinSize() === $this->maxVeinSize && $obj->getCost() === $this->cost && \count(\array_diff($this->disabledWorlds, $obj->disabledWorlds)) === 0);
 	}
 
 }

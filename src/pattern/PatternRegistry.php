@@ -14,7 +14,7 @@ final class PatternRegistry{
 	 * @param VeinMiningPattern $pattern the pattern to register
 	 */
 	public function registerPattern(VeinMiningPattern $pattern) : void {
-		$this->patterns[(string)$pattern->getKey()] = $pattern;
+		$this->patterns[(string) $pattern->getKey()] = $pattern;
 	}
 
 	/**
@@ -46,7 +46,7 @@ final class PatternRegistry{
 	 * @param string|VeinMiningPattern $pattern the pattern to unregister
 	 */
 	public function unregisterPattern(string|VeinMiningPattern $pattern) : void {
-		unset($this->patterns[is_string($pattern) ? $pattern : $pattern->getKey()]);
+		unset($this->patterns[\is_string($pattern) ? $pattern : $pattern->getKey()]);
 	}
 
 	/**

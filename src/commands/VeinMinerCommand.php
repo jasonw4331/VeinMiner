@@ -28,7 +28,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 	 * @inheritDoc
 	 */
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
-		if (count($args) < 1) {
+		if (\count($args) < 1) {
 			throw new InvalidCommandSyntaxException();
 		}
 
@@ -51,22 +51,21 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 			$manager->loadMaterialAliases();
 			$manager->loadDisabledGameModes();
 
-
-			$sender->sendMessage(TextFormat::GREEN.'VeinMiner configuration successfully reloaded.');
+			$sender->sendMessage(TextFormat::GREEN . 'VeinMiner configuration successfully reloaded.');
 			return true;
 		}
 
 		// version subcommand
 		elseif ($args[0] === 'version') {
 			$description = $this->owningPlugin->getDescription();
-			$headerFooter = TextFormat::GOLD.TextFormat::BOLD.TextFormat::STRIKETHROUGH.str_repeat('-', 44);
+			$headerFooter = TextFormat::GOLD . TextFormat::BOLD . TextFormat::STRIKETHROUGH . \str_repeat('-', 44);
 
 			$sender->sendmessage($headerFooter);
 			$sender->sendmessage('');
-			$sender->sendMessage(TextFormat::GOLD.'Version: '.TextFormat::WHITE.$description->getVersion() . $this->getUpdateSuffix());
-			$sender->sendMessage(TextFormat::GOLD.'Developer: '.TextFormat::WHITE.$description->getAuthors()[0]);
-			$sender->sendMessage(TextFormat::GOLD.'Plugin page: '.TextFormat::WHITE.$description->getWebsite());
-			$sender->sendMessage(TextFormat::GOLD.'Report bugs to: '.TextFormat::WHITE.'https://github.com/jasonwynn10/VeinMiner/issues');
+			$sender->sendMessage(TextFormat::GOLD . 'Version: ' . TextFormat::WHITE . $description->getVersion() . $this->getUpdateSuffix());
+			$sender->sendMessage(TextFormat::GOLD . 'Developer: ' . TextFormat::WHITE . $description->getAuthors()[0]);
+			$sender->sendMessage(TextFormat::GOLD . 'Plugin page: ' . TextFormat::WHITE . $description->getWebsite());
+			$sender->sendMessage(TextFormat::GOLD . 'Report bugs to: ' . TextFormat::WHITE . 'https://github.com/jasonwynn10/VeinMiner/issues');
 			$sender->sendmessage('');
 			$sender->sendmessage($headerFooter);
 		}
@@ -85,19 +84,19 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 				return true;
 			}
 			$playerData = PlayerPreferences::get($sender);
-            // Toggle a specific tool
-            if (count($args) >= 2) {
+			// Toggle a specific tool
+			if (\count($args) >= 2) {
 				$category = ToolCategory::get($args[1]);
-                if ($category === null) {
+				if ($category === null) {
 					$sender->sendMessage(TextFormat::GRAY . 'Invalid tool category: ' . TextFormat::YELLOW . $args[1]);
 					return true;
 				}
 
-                $playerData->setVeinMinerEnabled(!$playerData->isVeinMinerEnabled(), $category);
-                $sender->sendMessage(TextFormat::GRAY . 'VeinMiner successfully toggled '
+				$playerData->setVeinMinerEnabled(!$playerData->isVeinMinerEnabled(), $category);
+				$sender->sendMessage(TextFormat::GRAY . 'VeinMiner successfully toggled '
 					. ($playerData->isVeinMinerDisabled($category) ? TextFormat::RED . 'off' : TextFormat::GREEN . 'on')
-					. TextFormat::GRAY . ' for tool ' . TextFormat::YELLOW . mb_strtolower($category->getId()) . TextFormat::GRAY . '.');
-            }
+					. TextFormat::GRAY . ' for tool ' . TextFormat::YELLOW . \mb_strtolower($category->getId()) . TextFormat::GRAY . '.');
+			}
 
 			// Toggle all tools
 			else {
@@ -121,13 +120,13 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 			if(!$command->testPermission($sender, VMConstants::PERMISSION_MODE)){
 				return true;
 			}
-			if(count($args) < 2){
+			if(\count($args) < 2){
 				$sender->sendMessage(TextFormat::RED . 'Invalid command syntax! ' . TextFormat::GRAY . 'Missing parameter(s). ' . TextFormat::YELLOW . '/' . $label . ' ' . $args[0] . ' <sneak|stand|always|client>');
 				return true;
 			}
 			try{
 				/** @var ActivationStrategy $strategy */
-				$strategy = call_user_func([ActivationStrategy::class, strtoupper($args[1])]);
+				$strategy = \call_user_func([ActivationStrategy::class, \strtoupper($args[1])]);
 			}catch(\InvalidArgumentException $e) {
 				$sender->sendMessage(TextFormat::GRAY . 'Invalid activation strategy: ' . TextFormat::YELLOW . $args[1] . TextFormat::GRAY . '.');
 				return true;
@@ -138,7 +137,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 
 		// Blocklist subcommand
 		elseif($args[0] === 'blocklist') {
-			if(count($args) < 2) {
+			if(\count($args) < 2) {
 				$sender->sendMessage(TextFormat::RED . 'Invalid command syntax! ' . TextFormat::GRAY . 'Missing parameter(s). ' . TextFormat::YELLOW . '/' . $label . ' ' . $args[0] . ' <category> <add|remove|list>');
 				return true;
 			}
@@ -149,7 +148,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 				return true;
 			}
 
-			if (count($args) < 3) {
+			if (\count($args) < 3) {
 				$sender->sendMessage(TextFormat::RED . "Invalid command syntax! " . TextFormat::GRAY . "Missing parameter(s). " . TextFormat::YELLOW . "/" . $label . " " . $args[0] . " " . $args[1] . " <add|remove|list>");
 				return true;
 			}
@@ -161,7 +160,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 					return true;
 				}
 
-				if (count($args) < 4) {
+				if (\count($args) < 4) {
 					$sender->sendMessage(TextFormat::RED . "Invalid command syntax! " . TextFormat::GRAY . "Missing parameter(s). " . TextFormat::YELLOW . "/" . $label . " " . $args[0] . " " . $args[1] . " add <block>[data]");
 					return true;
 				}
@@ -169,28 +168,28 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 				$blocklist = $category->getBlocklist();
 				$configBlocklist = $this->owningPlugin->getConfig()->getNested("BlockList." . $category->getId());
 
-				for ($i = 3; $i < count($args); ++$i) {
-					$blockArg = strtolower($args[$i]);
+				for ($i = 3; $i < \count($args); ++$i) {
+					$blockArg = \strtolower($args[$i]);
 					$item = StringToItemParser::getInstance()->parse($args[$i]);
-                    if (!$item instanceof ItemBlock) {
+					if (!$item instanceof ItemBlock) {
 						$sender->sendMessage(TextFormat::RED . "Unknown block type/block state (was it an item)? " . TextFormat::GRAY . "Given " . TextFormat::YELLOW . $blockArg . TextFormat::GRAY . ".");
 						continue;
 					}
 					$block = $item->getBlock();
 
-                    if ($blocklist->contains($block)) {
+					if ($blocklist->contains($block)) {
 						$sender->sendMessage(TextFormat::GRAY . "A block with the ID " . TextFormat::YELLOW . $blockArg . TextFormat::GRAY . " is already on the " . TextFormat::YELLOW . $category->getId() . " " . TextFormat::GRAY . " blocklist.");
 						continue;
 					}
 
-                    $blocklist->add($block);
-                    $configBlocklist->add($block);
-                    $this->owningPlugin->getConfig()->setNested("BlockList." . $category->getId(), $configBlocklist);
+					$blocklist->add($block);
+					$configBlocklist->add($block);
+					$this->owningPlugin->getConfig()->setNested("BlockList." . $category->getId(), $configBlocklist);
 
-                    $sender->sendMessage(TextFormat::GRAY . "Block ID " . $block->__toString() . TextFormat::GRAY . " successfully added to the blocklist.");
-                }
+					$sender->sendMessage(TextFormat::GRAY . "Block ID " . $block->__toString() . TextFormat::GRAY . " successfully added to the blocklist.");
+				}
 
-                $this->owningPlugin->saveConfig();
+				$this->owningPlugin->saveConfig();
 			}
 
 			// /veinminer blocklist <category> remove
@@ -200,7 +199,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 					return true;
 				}
 
-				if(count($args) < 4){
+				if(\count($args) < 4){
 					$sender->sendMessage(TextFormat::RED . "Invalid command syntax! " . TextFormat::GRAY . "Missing parameter(s). " . TextFormat::YELLOW . "/" . $label . " " . $args[0] . " " . $args[1] . " remove <block>[data]");
 					return true;
 				}
@@ -208,8 +207,8 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 				$blocklist = $category->getBlocklist();
 				$configBlocklist = $this->owningPlugin->getConfig()->getNested("BlockList." . $category->getId());
 
-				for($i = 3; $i < count($args); ++$i){
-					$blockArg = strtolower($args[$i]);
+				for($i = 3; $i < \count($args); ++$i){
+					$blockArg = \strtolower($args[$i]);
 					$item = StringToItemParser::getInstance()->parse($args[$i]);
 					if(!$item instanceof ItemBlock){
 						$sender->sendMessage(TextFormat::RED . "Unknown block type/block state (was it an item)? " . TextFormat::GRAY . "Given " . TextFormat::YELLOW . $blockArg . TextFormat::GRAY . ".");
@@ -234,27 +233,27 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 
 			// /veinminer blocklist <category> list
 			elseif($args[2] === 'list'){
-				if(!$command->testPermission($sender, VMConstants::PERMISSION_BLOCKLIST_LIST.'.'.str_replace('_', ' ', strtolower($category->getId())))){
+				if(!$command->testPermission($sender, VMConstants::PERMISSION_BLOCKLIST_LIST . '.' . \str_replace('_', ' ', \strtolower($category->getId())))){
 					return true;
 				}
 
 				/** @var Block[] $blocklistIterable */
 				$blocklistIterable = $category->getBlocklist();
-                if ($this->owningPlugin->getConfig()->get(VMConstants::CONFIG_SORT_BLOCKLIST_ALPHABETICALLY, true)) {
-					sort($blocklistIterable);
-                }
+				if ($this->owningPlugin->getConfig()->get(VMConstants::CONFIG_SORT_BLOCKLIST_ALPHABETICALLY, true)) {
+					\sort($blocklistIterable);
+				}
 
-                if (count($blocklistIterable) < 1) {
+				if (\count($blocklistIterable) < 1) {
 					$sender->sendMessage(TextFormat::YELLOW . "The " . $category->getId() . " category is empty.");
 					return true;
 				}
 
 				$sender->sendMessage("");
-				$sender->sendMessage(TextFormat::GREEN . "Block list " . TextFormat::GRAY . "for category " . TextFormat::GREEN . str_replace('_', ' ', strtolower($category->getId())) . TextFormat::GRAY . ":");
+				$sender->sendMessage(TextFormat::GREEN . "Block list " . TextFormat::GRAY . "for category " . TextFormat::GREEN . \str_replace('_', ' ', \strtolower($category->getId())) . TextFormat::GRAY . ":");
 				forEach($blocklistIterable as $block) {
 					$sender->sendMessage(TextFormat::WHITE . " - " . $block->__toString());
 				}
-                $sender->sendMessage("");
+				$sender->sendMessage("");
 			}
 
 			// Unknown parameter
@@ -265,7 +264,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 		}
 
 		elseif($args[0] === 'toollist') {
-			if(count($args) < 2){
+			if(\count($args) < 2){
 				$sender->sendMessage(TextFormat::RED . "Invalid command syntax! " . TextFormat::GRAY . "Missing parameter(s). " . TextFormat::YELLOW . "/" . $label . " " . $args[0] . " <category> <add|remove|list>");
 				return true;
 			}
@@ -276,7 +275,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 				return true;
 			}
 
-			if(count($args) < 3){
+			if(\count($args) < 3){
 				$sender->sendMessage(TextFormat::RED . "Invalid command syntax! " . TextFormat::GRAY . "Missing parameter(s). " . TextFormat::YELLOW . "/" . $label . " " . $args[0] . " " . $args[1] . " <add|remove|list>");
 				return true;
 			}
@@ -292,7 +291,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 					return true;
 				}
 
-				if(count($args) < 4){
+				if(\count($args) < 4){
 					$sender->sendMessage(TextFormat::RED . "Invalid command syntax! " . TextFormat::GRAY . "Missing parameter(s). " . TextFormat::YELLOW . "/" . $label . " " . $args[0] . " " . $args[1] . " " . $args[2] . " <tool>[data]");
 					return true;
 				}
@@ -305,8 +304,8 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 					return true;
 				}
 
-				for($i = 3; $i < count($args); ++$i){
-					$toolArg = strtolower($args[$i]);
+				for($i = 3; $i < \count($args); ++$i){
+					$toolArg = \strtolower($args[$i]);
 					$tool = StringToItemParser::getInstance()->parse($args[$i]);
 					if(!$tool instanceof Tool){
 						$sender->sendMessage(TextFormat::RED . "Unknown item. " . TextFormat::GRAY . "Given: " . TextFormat::YELLOW . $toolArg . TextFormat::GRAY . ".");
@@ -340,7 +339,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 					return true;
 				}
 
-				if(count($args) < 4){
+				if(\count($args) < 4){
 					$sender->sendMessage(TextFormat::RED . "Invalid command syntax! " . TextFormat::GRAY . "Missing parameter(s). " . TextFormat::YELLOW . "/" . $label . " " . $args[0] . " " . $args[1] . " " . $args[2] . " <tool>[data]");
 					return true;
 				}
@@ -353,8 +352,8 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 					return true;
 				}
 
-				for($i = 3; $i < count($args); ++$i){
-					$toolArg = strtolower($args[$i]);
+				for($i = 3; $i < \count($args); ++$i){
+					$toolArg = \strtolower($args[$i]);
 					$tool = StringToItemParser::getInstance()->parse($args[$i]);
 					if(!$tool instanceof Tool){
 						$sender->sendMessage(TextFormat::RED . "Unknown item. " . TextFormat::GRAY . "Given: " . TextFormat::YELLOW . $toolArg . TextFormat::GRAY . ".");
@@ -379,16 +378,16 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 
 			// /veinminer toollist <category> list
 			elseif($args[2] === 'list'){
-				if(!$command->testPermission($sender, VMConstants::PERMISSION_TOOLLIST_LIST.'.'.str_replace('_', ' ', strtolower($category->getId())))){
+				if(!$command->testPermission($sender, VMConstants::PERMISSION_TOOLLIST_LIST . '.' . \str_replace('_', ' ', \strtolower($category->getId())))){
 					return true;
 				}
 
 				$sender->sendMessage("");
-				$sender->sendMessage(TextFormat::GREEN . "Tool list " . TextFormat::GRAY . "for category " . TextFormat::GREEN . str_replace('_', ' ', strtolower($category->getId())) . TextFormat::GRAY . ":");
+				$sender->sendMessage(TextFormat::GREEN . "Tool list " . TextFormat::GRAY . "for category " . TextFormat::GREEN . \str_replace('_', ' ', \strtolower($category->getId())) . TextFormat::GRAY . ":");
 				foreach($category->getTools() as $tool) {
 					$sender->sendMessage(TextFormat::WHITE . " - " . TextFormat::YELLOW . $tool);
 				}
-                $sender->sendMessage("");
+				$sender->sendMessage("");
 			}
 		}
 
@@ -397,7 +396,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 				return true;
 			}
 
-			if(count($args) < 2) {
+			if(\count($args) < 2) {
 				$sender->sendMessage(TextFormat::RED . "Invalid command syntax! " . TextFormat::GRAY . "Missing parameter(s). " . TextFormat::YELLOW . "/" . $label . " " . $args[0] . " <pattern_id>");
 				return true;
 			}
@@ -409,8 +408,8 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 				return true;
 			}
 
-			$pattern = $this->owningPlugin->getPatternRegistry()->getPattern((string)$patternNamespace);
-            if ($pattern === null) {
+			$pattern = $this->owningPlugin->getPatternRegistry()->getPattern((string) $patternNamespace);
+			if ($pattern === null) {
 				$sender->sendMessage(TextFormat::GRAY . "A pattern with the ID " . TextFormat::YELLOW . $patternNamespace . TextFormat::GRAY . " could not be found.");
 				return true;
 			}

@@ -52,7 +52,7 @@ final class VeinMiner extends PluginBase implements Listener {
 		$this->saveResource('categories.yml');
 		$this->categoriesConfig = new Config(Path::join($this->getDataFolder(), 'categories.yml'));
 		$this->playerDataDirectory = Path::join($this->getDataFolder(), 'playerdata');
-		@mkdir($this->playerDataDirectory);
+		@\mkdir($this->playerDataDirectory);
 
 		// Pattern registration
 		$this->patternRegistry = new PatternRegistry();
@@ -94,7 +94,7 @@ final class VeinMiner extends PluginBase implements Listener {
 
 		// TODO: automatic update check
 	}
-	
+
 	protected function onDisable() : void {
 		$this->getLogger()->debug('Clearing localized data');
 		$this->manager->clearLocalisedData();

@@ -32,7 +32,9 @@ final class PatternExpansive implements VeinMiningPattern{
 		setInstance as private _setInstance; // don't let someone set our instance
 	}
 
+	/** @var Set<Block> $buffer */
 	private Set $buffer;
+	/** @var Set<Block> $recent */
 	private Set $recent;
 	private NamespacedKey $key;
 

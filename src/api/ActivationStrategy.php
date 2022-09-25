@@ -28,8 +28,6 @@ final class ActivationStrategy{
 	}
 
 	/**
-	 * @param string   $name
-	 * @param callable $callable
 	 * @phpstan-param callable(Player): bool $callable
 	 */
 	private function __construct(

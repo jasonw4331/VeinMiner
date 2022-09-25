@@ -18,7 +18,7 @@ final class PlayerDataListener implements Listener{
 		$playerData = PlayerPreferences::get($player);
 
 		// If the directory is only just created, there's no player data to read from anyways
-		if(!@mkdir($this->plugin->getPlayerDataDirectory())) {
+		if(!@\mkdir($this->plugin->getPlayerDataDirectory())) {
 			return;
 		}
 
