@@ -1,0 +1,872 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot call method setExecutor\\(\\) on \\(pocketmine\\\\command\\\\Command&pocketmine\\\\plugin\\\\PluginOwned\\)\\|null\\.$#"
+			count: 1
+			path: ../src/VeinMiner.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\VeinMiner\\:\\:getVeinMiningPattern\\(\\) should return jasonwynn10\\\\VeinMiner\\\\pattern\\\\VeinMiningPattern but returns jasonwynn10\\\\VeinMiner\\\\pattern\\\\VeinMiningPattern\\|jasonwynn10\\\\VeinMiner\\\\utils\\\\NamespacedKey\\.$#"
+			count: 1
+			path: ../src/VeinMiner.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: ../src/VeinMiner.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of method jasonwynn10\\\\VeinMiner\\\\pattern\\\\PatternRegistry\\:\\:getPattern\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: ../src/VeinMiner.php
+
+		-
+			message: "#^Parameter \\#2 \\$key of class jasonwynn10\\\\VeinMiner\\\\utils\\\\NamespacedKey constructor expects string, mixed given\\.$#"
+			count: 1
+			path: ../src/VeinMiner.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\VeinMiner\\:\\:\\$veinMiningPattern \\(jasonwynn10\\\\VeinMiner\\\\pattern\\\\VeinMiningPattern\\|null\\) does not accept jasonwynn10\\\\VeinMiner\\\\pattern\\\\VeinMiningPattern\\|jasonwynn10\\\\VeinMiner\\\\utils\\\\NamespacedKey\\.$#"
+			count: 1
+			path: ../src/VeinMiner.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: ../src/VeinMiner.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\ActivationStrategy\\:\\:SNEAK\\(\\)\\.$#"
+			count: 2
+			path: ../src/api/ActivationStrategy.php
+
+		-
+			message: "#^Parameter \\#1 \\$name of static method jasonwynn10\\\\VeinMiner\\\\api\\\\ActivationStrategy\\:\\:__callStatic\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: ../src/api/ActivationStrategy.php
+
+		-
+			message: "#^Parameter \\#1 \\$x of method pocketmine\\\\world\\\\World\\:\\:getBlockAt\\(\\) expects int, float\\|int given\\.$#"
+			count: 1
+			path: ../src/api/VBlockFace.php
+
+		-
+			message: "#^Parameter \\#2 \\$y of method pocketmine\\\\world\\\\World\\:\\:getBlockAt\\(\\) expects int, float\\|int given\\.$#"
+			count: 1
+			path: ../src/api/VBlockFace.php
+
+		-
+			message: "#^Parameter \\#3 \\$z of method pocketmine\\\\world\\\\World\\:\\:getBlockAt\\(\\) expects int, float\\|int given\\.$#"
+			count: 1
+			path: ../src/api/VBlockFace.php
+
+		-
+			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			count: 4
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Call to an undefined static method pocketmine\\\\item\\\\VanillaItems\\:\\:AIR\\(\\)\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Call to method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:getBlockList\\(\\) with incorrect case\\: getBlocklist$#"
+			count: 3
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Cannot access offset 'Items' on mixed\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Cannot call method getFolderName\\(\\) on pocketmine\\\\world\\\\World\\|null\\.$#"
+			count: 2
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 2
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Left side of \\|\\| is always true\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\api\\\\VeinMinerManager\\:\\:getAliasFor\\(\\) return type has no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\api\\\\VeinMinerManager\\:\\:getAllVeinMineableBlocks\\(\\) return type has no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\api\\\\VeinMinerManager\\:\\:getBlockListGlobal\\(\\) return type has no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\api\\\\VeinMinerManager\\:\\:getMaterialKey\\(\\) has parameter \\$map with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\api\\\\VeinMinerManager\\:\\:isDisabledGameMode\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\api\\\\VeinMinerManager\\:\\:registerAlias\\(\\) has parameter \\$alias with no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\api\\\\VeinMinerManager\\:\\:removeBlockToBeVeinMined\\(\\) has parameter \\$block with no type specified\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\api\\\\VeinMinerManager\\:\\:unregisterAlias\\(\\) has parameter \\$alias with no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$array of function array_keys expects array, mixed given\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of method jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\:\\:contains\\(\\) expects jasonwynn10\\\\VeinMiner\\\\data\\\\block\\\\VeinBlock\\|pocketmine\\\\block\\\\BlockIdentifier, pocketmine\\\\block\\\\Block\\|pocketmine\\\\block\\\\BlockIdentifier given\\.$#"
+			count: 3
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of method jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\:\\:getVeinBlock\\(\\) expects pocketmine\\\\block\\\\BlockIdentifier, pocketmine\\\\block\\\\Block\\|pocketmine\\\\block\\\\BlockIdentifier given\\.$#"
+			count: 2
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$id of class jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory constructor expects string, int\\|string given\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$id of static method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:get\\(\\) expects pocketmine\\\\item\\\\Item\\|string, int\\|string given\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$input of method pocketmine\\\\item\\\\StringToItemParser\\:\\:parse\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$provided of class jasonwynn10\\\\VeinMiner\\\\data\\\\AlgorithmConfig constructor expects array, mixed given\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of static method pocketmine\\\\player\\\\GameMode\\:\\:fromString\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function mb_strtolower expects string, int\\|string given\\.$#"
+			count: 2
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#2 \\$grantedBy of static method pocketmine\\\\permission\\\\DefaultPermissions\\:\\:registerPermission\\(\\) expects array\\<pocketmine\\\\permission\\\\Permission\\>, array\\<int, pocketmine\\\\permission\\\\Permission\\|null\\> given\\.$#"
+			count: 4
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Parameter \\#2 \\$string of function explode expects string, mixed given\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\api\\\\VeinMinerManager\\:\\:\\$aliases type has no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\api\\\\VeinMinerManager\\:\\:\\$globalBlockList type has no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Right side of \\|\\| is always true\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: ../src/api/VeinMinerManager.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\api\\\\event\\\\PlayerVeinMineEvent\\:\\:__construct\\(\\) has parameter \\$blocks with generic class Ramsey\\\\Collection\\\\Set but does not specify its types\\: T$#"
+			count: 1
+			path: ../src/api/event/PlayerVeinMineEvent.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\api\\\\event\\\\PlayerVeinMineEvent\\:\\:getBlocks\\(\\) return type with generic class Ramsey\\\\Collection\\\\Set does not specify its types\\: T$#"
+			count: 1
+			path: ../src/api/event/PlayerVeinMineEvent.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\api\\\\event\\\\PlayerVeinMineEvent\\:\\:\\$blocks with generic class Ramsey\\\\Collection\\\\Set does not specify its types\\: T$#"
+			count: 1
+			path: ../src/api/event/PlayerVeinMineEvent.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\api\\\\event\\\\PlayerVeinMineEvent\\:\\:\\$player is never read, only written\\.$#"
+			count: 1
+			path: ../src/api/event/PlayerVeinMineEvent.php
+
+		-
+			message: "#^Binary operation \"\\.\" between '§f \\- §e' and jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplate results in an error\\.$#"
+			count: 1
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Call to an undefined method pocketmine\\\\plugin\\\\Plugin\\:\\:getCategoriesConfig\\(\\)\\.$#"
+			count: 3
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Call to an undefined method pocketmine\\\\plugin\\\\Plugin\\:\\:getConfig\\(\\)\\.$#"
+			count: 7
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Call to an undefined method pocketmine\\\\plugin\\\\Plugin\\:\\:getPatternRegistry\\(\\)\\.$#"
+			count: 1
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Call to an undefined method pocketmine\\\\plugin\\\\Plugin\\:\\:getVeinMinerManager\\(\\)\\.$#"
+			count: 1
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Call to an undefined method pocketmine\\\\plugin\\\\Plugin\\:\\:saveConfig\\(\\)\\.$#"
+			count: 3
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Call to an undefined method pocketmine\\\\plugin\\\\Plugin\\:\\:setVeinMiningPattern\\(\\)\\.$#"
+			count: 1
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Call to method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:getBlockList\\(\\) with incorrect case\\: getBlocklist$#"
+			count: 3
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Call to method pocketmine\\\\command\\\\CommandSender\\:\\:sendMessage\\(\\) with incorrect case\\: sendmessage$#"
+			count: 4
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Call to static method get\\(\\) on an unknown class jasonwynn10\\\\VeinMiner\\\\commands\\\\UpdateChecker\\.$#"
+			count: 1
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 2
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 4
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\{'jasonwynn10\\\\\\\\VeinMiner\\\\\\\\api\\\\\\\\ActivationStrategy', string\\} given\\.$#"
+			count: 1
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of method jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\:\\:contains\\(\\) expects jasonwynn10\\\\VeinMiner\\\\data\\\\block\\\\VeinBlock\\|pocketmine\\\\block\\\\BlockIdentifier, pocketmine\\\\block\\\\Block given\\.$#"
+			count: 2
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 2
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 2
+			path: ../src/commands/VeinMinerCommand.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\AlgorithmConfig\\:\\:__construct\\(\\) has parameter \\$provided with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/data/AlgorithmConfig.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\AlgorithmConfig\\:\\:includesEdges\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/data/AlgorithmConfig.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\AlgorithmConfig\\:\\:isDisabledWorld\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/data/AlgorithmConfig.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\AlgorithmConfig\\:\\:isRepairFriendly\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/data/AlgorithmConfig.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\AlgorithmConfig\\:\\:readUnsafe\\(\\) has parameter \\$raw with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/data/AlgorithmConfig.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(world the world to check\\)\\: Unexpected token \"the\", expected variable at offset 97$#"
+			count: 1
+			path: ../src/data/AlgorithmConfig.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\data\\\\AlgorithmConfig\\:\\:\\$disabledWorlds type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/data/AlgorithmConfig.php
+
+		-
+			message: "#^Class jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: ../src/data/BlockList.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: ../src/data/BlockList.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\:\\:__construct\\(\\) has parameter \\$lists with no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\.$#"
+			count: 1
+			path: ../src/data/BlockList.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\:\\:contains\\(\\) should return true but returns bool\\.$#"
+			count: 2
+			path: ../src/data/BlockList.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\:\\:containsExact\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/data/BlockList.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\:\\:containsWildcard\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/data/BlockList.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\:\\:getIterator\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/data/BlockList.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\block\\\\VeinBlock\\:\\:isWildcard\\(\\) invoked with 1 parameter, 0 required\\.$#"
+			count: 1
+			path: ../src/data/BlockList.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\:\\:\\$blocks \\(Ramsey\\\\Collection\\\\Set\\<jasonwynn10\\\\VeinMiner\\\\data\\\\block\\\\VeinBlock\\>\\) does not accept Ramsey\\\\Collection\\\\CollectionInterface\\<mixed\\>\\.$#"
+			count: 1
+			path: ../src/data/BlockList.php
+
+		-
+			message: "#^Return type \\(array\\) of method jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\:\\:getIterator\\(\\) should be compatible with return type \\(Traversable\\<mixed, mixed\\>\\) of method IteratorAggregate\\<mixed,mixed\\>\\:\\:getIterator\\(\\)$#"
+			count: 1
+			path: ../src/data/BlockList.php
+
+		-
+			message: "#^Class jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: ../src/data/MaterialAlias.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\:\\:__clone\\(\\) with return type void returns jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias but should not return anything\\.$#"
+			count: 1
+			path: ../src/data/MaterialAlias.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\:\\:addAlias\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/data/MaterialAlias.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\:\\:getIterator\\(\\) return type has no value type specified in iterable type Traversable\\<mixed, mixed\\>\\.$#"
+			count: 1
+			path: ../src/data/MaterialAlias.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\:\\:isAliased\\(\\) should return true but returns bool\\.$#"
+			count: 3
+			path: ../src/data/MaterialAlias.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\:\\:removeAlias\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/data/MaterialAlias.php
+
+		-
+			message: "#^Right side of && is always true\\.$#"
+			count: 1
+			path: ../src/data/MaterialAlias.php
+
+		-
+			message: "#^Call to an undefined static method pocketmine\\\\utils\\\\Filesystem\\:\\:safeFilePutContents\\(\\)\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Foreach overwrites \\$category with its value variable\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\PlayerPreferences\\:\\:isDirty\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\PlayerPreferences\\:\\:isVeinMinerDisabled\\(\\) should return true but returns bool\\.$#"
+			count: 2
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\PlayerPreferences\\:\\:isVeinMinerEnabled\\(\\) should return true but returns bool\\.$#"
+			count: 2
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\PlayerPreferences\\:\\:isVeinMinerPartiallyDisabled\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\PlayerPreferences\\:\\:read\\(\\) has parameter \\$root with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\PlayerPreferences\\:\\:write\\(\\) has parameter \\$root with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\PlayerPreferences\\:\\:write\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Parameter \\#1 \\$element of method Ramsey\\\\Collection\\\\AbstractSet\\<jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\>\\:\\:add\\(\\) expects jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory, jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\|null given\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Parameter \\#1 \\$root of method jasonwynn10\\\\VeinMiner\\\\data\\\\PlayerPreferences\\:\\:read\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\data\\\\PlayerPreferences\\:\\:\\$CACHE type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\data\\\\PlayerPreferences\\:\\:\\$activationStrategy \\(jasonwynn10\\\\VeinMiner\\\\api\\\\ActivationStrategy\\) does not accept object\\.$#"
+			count: 1
+			path: ../src/data/PlayerPreferences.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\data\\\\block\\\\BlockCache\\:\\:MATERIAL\\(\\)\\.$#"
+			count: 1
+			path: ../src/data/block/VeinBlock.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\block\\\\VeinBlock\\:\\:isWildcard\\(\\) should return true but returns false\\.$#"
+			count: 1
+			path: ../src/data/block/VeinBlock.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of class jasonwynn10\\\\VeinMiner\\\\data\\\\block\\\\VeinBlockDatable constructor expects pocketmine\\\\block\\\\Block, pocketmine\\\\block\\\\Block\\|pocketmine\\\\block\\\\BlockIdentifier given\\.$#"
+			count: 1
+			path: ../src/data/block/VeinBlock.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\block\\\\VeinBlockDatable\\:\\:encapsulates\\(\\) should return true but returns bool\\.$#"
+			count: 2
+			path: ../src/data/block/VeinBlockDatable.php
+
+		-
+			message: "#^Parameter \\#2 \\$start of function mb_substr expects int, int\\<0, max\\>\\|false given\\.$#"
+			count: 1
+			path: ../src/data/block/VeinBlockDatable.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\data\\\\block\\\\VeinBlockWildcard\\:\\:hasSpecificData\\(\\) should return true but returns false\\.$#"
+			count: 1
+			path: ../src/data/block/VeinBlockWildcard.php
+
+		-
+			message: "#^Call to method completeConfig\\(\\) on an unknown class SOFe\\\\Capital\\\\Capital\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Call to method getMessage\\(\\) on an unknown class SOFe\\\\Capital\\\\CapitalException\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Call to method takeMoney\\(\\) on an unknown class SOFe\\\\Capital\\\\Capital\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Call to static method api\\(\\) on an unknown class SOFe\\\\Capital\\\\Capital\\.$#"
+			count: 2
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Call to static method resolve\\(\\) on an unknown class SOFe\\\\InfoAPI\\\\InfoAPI\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Caught class SOFe\\\\Capital\\\\CapitalException not found\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Class class@anonymous/src/economy/CapitalBasedEconomyModifier\\.php\\:51 does not have a constructor and must be instantiated without any parameters\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Instantiated class SOFe\\\\Capital\\\\LabelSet not found\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Instantiated class SOFe\\\\InfoAPI\\\\PlayerInfo not found\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\economy\\\\CapitalBasedEconomyModifier\\:\\:hasEconomyPlugin\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\economy\\\\CapitalBasedEconomyModifier\\:\\:hasSufficientBalance\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\economy\\\\CapitalBasedEconomyModifier\\:\\:shouldCharge\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Parameter \\$api of anonymous function has invalid type SOFe\\\\Capital\\\\Capital\\.$#"
+			count: 2
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\economy\\\\CapitalBasedEconomyModifier\\:\\:\\$selector has unknown class SOFe\\\\Capital\\\\Schema\\\\Complete as its type\\.$#"
+			count: 1
+			path: ../src/economy/CapitalBasedEconomyModifier.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\economy\\\\EmptyEconomyModifier\\:\\:shouldCharge\\(\\) should return true but returns false\\.$#"
+			count: 1
+			path: ../src/economy/EmptyEconomyModifier.php
+
+		-
+			message: "#^Call to method pocketmine\\\\player\\\\Player\\:\\:getGamemode\\(\\) with incorrect case\\: getGameMode$#"
+			count: 1
+			path: ../src/listener/BreakBlockListener.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 3
+			path: ../src/listener/BreakBlockListener.php
+
+		-
+			message: "#^Result of \\|\\| is always false\\.$#"
+			count: 1
+			path: ../src/listener/BreakBlockListener.php
+
+		-
+			message: "#^Result of \\|\\| is always true\\.$#"
+			count: 1
+			path: ../src/listener/BreakBlockListener.php
+
+		-
+			message: "#^Right side of \\|\\| is always true\\.$#"
+			count: 3
+			path: ../src/listener/BreakBlockListener.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: ../src/listener/BreakBlockListener.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\pattern\\\\PatternExpansive\\:\\:allocateBlocks\\(\\) has parameter \\$alias with no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\.$#"
+			count: 1
+			path: ../src/pattern/PatternExpansive.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: ../src/pattern/PatternExpansive.php
+
+		-
+			message: "#^Possibly invalid array key type jasonwynn10\\\\VeinMiner\\\\utils\\\\NamespacedKey\\|string\\.$#"
+			count: 1
+			path: ../src/pattern/PatternRegistry.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\pattern\\\\PatternThorough\\:\\:allocateBlocks\\(\\) has parameter \\$alias with no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\.$#"
+			count: 1
+			path: ../src/pattern/PatternThorough.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: ../src/pattern/PatternThorough.php
+
+		-
+			message: "#^Parameter \\#1 \\$iterator of class CachingIterator constructor expects Iterator, Ramsey\\\\Collection\\\\Set\\<pocketmine\\\\block\\\\Block\\> given\\.$#"
+			count: 1
+			path: ../src/pattern/PatternThorough.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\VBlockFace\\:\\:DOWN\\(\\)\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\VBlockFace\\:\\:EAST\\(\\)\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\VBlockFace\\:\\:NORTH\\(\\)\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\VBlockFace\\:\\:NORTH_EAST\\(\\)\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\VBlockFace\\:\\:NORTH_WEST\\(\\)\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\VBlockFace\\:\\:SOUTH\\(\\)\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\VBlockFace\\:\\:SOUTH_EAST\\(\\)\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\VBlockFace\\:\\:SOUTH_WEST\\(\\)\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\VBlockFace\\:\\:UP\\(\\)\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Call to an undefined static method jasonwynn10\\\\VeinMiner\\\\api\\\\VBlockFace\\:\\:WEST\\(\\)\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Left side of \\|\\| is always true\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\pattern\\\\PatternUtils\\:\\:getFacesToMine\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\pattern\\\\PatternUtils\\:\\:isOfType\\(\\) has parameter \\$alias with no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\pattern\\\\PatternUtils\\:\\:isOfType\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\pattern\\\\PatternUtils\\:\\:\\$LIMITED_FACES has no type specified\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Right side of && is always true\\.$#"
+			count: 2
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: ../src/pattern/PatternUtils.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\pattern\\\\VeinMiningPattern\\:\\:allocateBlocks\\(\\) has parameter \\$alias with no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\MaterialAlias\\.$#"
+			count: 1
+			path: ../src/pattern/VeinMiningPattern.php
+
+		-
+			message: "#^Call to an undefined method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplate\\:\\:contains\\(\\)\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Cannot call method remove\\(\\) on array\\<jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplate\\>\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 2
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:__construct\\(\\) has parameter \\$blockList with no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:__construct\\(\\) has parameter \\$tools with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:containsTool\\(\\) should return true but returns false\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:getAll\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:getBlockList\\(\\) return type has no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:getWithTemplate\\(\\) should return array\\<jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\|null\\> but returns array\\<int, jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\|jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplate\\>\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:hasPermission\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$tools with type array\\<jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplate\\>\\|null is not subtype of native type array\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^PHPDoc type for property jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:\\$tools with type array\\<jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplate\\>\\|null is not subtype of native type array\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolCategory\\:\\:\\$blockList type has no value type specified in iterable type jasonwynn10\\\\VeinMiner\\\\data\\\\BlockList\\.$#"
+			count: 1
+			path: ../src/tool/ToolCategory.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplateItemStack\\:\\:__construct\\(\\) has parameter \\$lore with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/tool/ToolTemplateItemStack.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplateItemStack\\:\\:getLore\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/tool/ToolTemplateItemStack.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplateItemStack\\:\\:matches\\(\\) should return true but returns bool\\.$#"
+			count: 1
+			path: ../src/tool/ToolTemplateItemStack.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplateItemStack\\:\\:matches\\(\\) should return true but returns false\\.$#"
+			count: 2
+			path: ../src/tool/ToolTemplateItemStack.php
+
+		-
+			message: "#^Property jasonwynn10\\\\VeinMiner\\\\tool\\\\ToolTemplateItemStack\\:\\:\\$lore type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/tool/ToolTemplateItemStack.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\utils\\\\ItemValidator\\:\\:isValid\\(\\) should return true but returns bool\\.$#"
+			count: 2
+			path: ../src/utils/ItemValidator.php
+
+		-
+			message: "#^Cannot call method getName\\(\\) on pocketmine\\\\plugin\\\\Plugin\\|string\\.$#"
+			count: 1
+			path: ../src/utils/NamespacedKey.php
+
+		-
+			message: "#^Constant jasonwynn10\\\\VeinMiner\\\\utils\\\\NamespacedKey\\:\\:VALID_KEY is unused\\.$#"
+			count: 1
+			path: ../src/utils/NamespacedKey.php
+
+		-
+			message: "#^Method jasonwynn10\\\\VeinMiner\\\\utils\\\\VMEventFactory\\:\\:callPlayerVeinMineEvent\\(\\) has parameter \\$blocks with generic class Ramsey\\\\Collection\\\\Set but does not specify its types\\: T$#"
+			count: 1
+			path: ../src/utils/VMEventFactory.php
+
