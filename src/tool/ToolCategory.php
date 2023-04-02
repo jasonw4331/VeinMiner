@@ -10,12 +10,18 @@ use jasonwynn10\VeinMiner\VeinMiner;
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
 use pocketmine\permission\Permissible;
+use function count;
+use function in_array;
+use function is_string;
+use function mb_strtolower;
+use function preg_match;
+use function str_replace;
 
 final class ToolCategory{
 
 	/** @var array<ToolCategory> $CATEGORIES */
 	private static array $CATEGORIES = [];
-	private CONST VALID_ID = '/[A-Za-z0-9]+/i';
+	private const VALID_ID = '/[A-Za-z0-9]+/i';
 
 	public static ToolCategory $HAND;
 
@@ -24,11 +30,11 @@ final class ToolCategory{
 	/**
 	 * Construct a new tool category with an empty block and tool list.
 	 *
-	 * @param string                   $id the unique id of the tool category. Recommended to be a single-worded, PascalCase id.
-	 * Must match [A-Za-z0-9]
-	 * @param AlgorithmConfig          $config the algorithm configuration for this category
+	 * @param string                   $id        the unique id of the tool category. Recommended to be a single-worded, PascalCase id.
+	 *                                            Must match [A-Za-z0-9]
+	 * @param AlgorithmConfig          $config    the algorithm configuration for this category
 	 * @param Blocklist|null           $blockList the category block list
-	 * @param array<ToolTemplate>|null $tools the tools that apply to this category
+	 * @param array<ToolTemplate>|null $tools     the tools that apply to this category
 	 */
 	public function __construct(private string $id, private AlgorithmConfig $config, ?Blocklist $blockList = null, private array $tools = []){
 		static $lock = true;
@@ -38,7 +44,7 @@ final class ToolCategory{
 			ToolCategory::register(ToolCategory::$HAND);
 		}
 
-		if(!\preg_match(ToolCategory::VALID_ID, $id)){
+		if(!preg_match(ToolCategory::VALID_ID, $id)){
 			throw new \InvalidArgumentException("Invalid tool category id: $id");
 		}
 
@@ -69,7 +75,7 @@ final class ToolCategory{
 	 * @param ToolTemplate $template the template to add
 	 */
 	public function addTool(ToolTemplate $template) : void{
-		if(\in_array($template, $this->tools, true)){
+		if(in_array($template, $this->tools, true)){
 			return;
 		}
 
@@ -138,7 +144,7 @@ final class ToolCategory{
 	 * @return true if permission is granted, false otherwise
 	 */
 	public function hasPermission(Permissible $permissible) : bool{
-		return $permissible->hasPermission(\str_replace('%s', \mb_strtolower($this->id), VMConstants::PERMISSION_DYNAMIC_VEINMINE));
+		return $permissible->hasPermission(str_replace('%s', mb_strtolower($this->id), VMConstants::PERMISSION_DYNAMIC_VEINMINE));
 	}
 
 	public function equals(object $obj) : bool{
@@ -153,8 +159,8 @@ final class ToolCategory{
 	 * @return ToolCategory|null the tool category. null if none
 	 */
 	public static function get(Item|string $id) : ?ToolCategory{
-		if(\is_string($id)){
-			return self::$CATEGORIES[\mb_strtolower($id)] ?? null;
+		if(is_string($id)){
+			return self::$CATEGORIES[mb_strtolower($id)] ?? null;
 		}
 
 		if($id->isNull()){
@@ -178,7 +184,7 @@ final class ToolCategory{
 	 * @param ToolCategory $category the category to register
 	 */
 	public static function register(ToolCategory $category) : void{
-		self::$CATEGORIES[\mb_strtolower($category->getId())] = $category;
+		self::$CATEGORIES[mb_strtolower($category->getId())] = $category;
 	}
 
 	/**
@@ -213,7 +219,7 @@ final class ToolCategory{
 	 * @return int the amount of registered categories
 	 */
 	public static function getRegisteredAmount() : int{
-		return \count(self::$CATEGORIES);
+		return count(self::$CATEGORIES);
 	}
 
 	/**

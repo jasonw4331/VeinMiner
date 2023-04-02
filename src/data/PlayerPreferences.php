@@ -12,6 +12,14 @@ use pocketmine\Server;
 use pocketmine\utils\Filesystem;
 use Ramsey\Collection\Set;
 use Webmozart\PathUtil\Path;
+use function count;
+use function file_exists;
+use function file_get_contents;
+use function is_dir;
+use function json_decode;
+use function json_encode;
+use function unlink;
+use const JSON_THROW_ON_ERROR;
 
 final class PlayerPreferences{
 
@@ -41,7 +49,7 @@ final class PlayerPreferences{
 	 * Enable VeinMiner for this player
 	 */
 	public function enableVeinMiner(?ToolCategory $category = null) : void{
-		if($category !== null) {
+		if($category !== null){
 			$this->disabledCategories->remove($category);
 			return;
 		}
@@ -54,11 +62,11 @@ final class PlayerPreferences{
 	 */
 	public function disableVeinMiner(?ToolCategory $category = null) : void{
 		$this->dirty = true;
-		if($category !== null) {
+		if($category !== null){
 			$this->disabledCategories->add($category);
 			return;
 		}
-		foreach(ToolCategory::getAll() as $category) {
+		foreach(ToolCategory::getAll() as $category){
 			$this->disabledCategories->add($category);
 		}
 	}
@@ -78,10 +86,10 @@ final class PlayerPreferences{
 	 * @return true if enabled, false otherwise
 	 */
 	public function isVeinMinerEnabled(?ToolCategory $category = null) : bool{
-		if($category !== null) {
+		if($category !== null){
 			return !$this->disabledCategories->contains($category);
 		}
-		return \count($this->disabledCategories) === 0;
+		return count($this->disabledCategories) === 0;
 	}
 
 	/**
@@ -90,7 +98,7 @@ final class PlayerPreferences{
 	 * @return true if disabled, false otherwise
 	 */
 	public function isVeinMinerDisabled(?ToolCategory $category = null) : bool{
-		if($category !== null) {
+		if($category !== null){
 			return $this->disabledCategories->contains($category);
 		}
 		return $this->disabledCategories->count() >= ToolCategory::getRegisteredAmount();
@@ -155,7 +163,7 @@ final class PlayerPreferences{
 
 		/** @var ToolCategory[] $disabledCategories */
 		$disabledCategories = $this->disabledCategories->toArray();
-		foreach($disabledCategories as $category) {
+		foreach($disabledCategories as $category){
 			$root['disabled_categories'][] = $category->getId();
 		}
 
@@ -168,17 +176,17 @@ final class PlayerPreferences{
 	 * @param array $root the object from which to read data
 	 */
 	public function read(array $root) : void{
-		if(isset($root['activation_strategy'])) {
+		if(isset($root['activation_strategy'])){
 			try{
 				/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 				$this->activationStrategy = ActivationStrategy::__callStatic($root['activation_strategy'], []);
-			}catch(\Error $e) {
+			}catch(\Error $e){
 				$this->activationStrategy = ActivationStrategy::getDefaultActivationStrategy();
 			}
 		}
 
-		if(isset($root['disabled_categories'])) {
-			foreach($root['disabled_categories'] as $category) {
+		if(isset($root['disabled_categories'])){
+			foreach($root['disabled_categories'] as $category){
 				$this->disabledCategories->add(ToolCategory::get($category));
 			}
 		}
@@ -194,13 +202,13 @@ final class PlayerPreferences{
 	 * @see VeinMiner#getPlayerDataDirectory()
 	 */
 	public function writeToFile(string $directory) : void{
-		if(!\is_dir($directory)) {
+		if(!is_dir($directory)){
 			throw new \InvalidArgumentException("Provided directory is not a directory");
 		}
 		try{
 			FileSystem::safeFilePutContents(
 				Path::join($directory, $this->player . '.json'),
-				\json_encode($this->write([]), flags: JSON_THROW_ON_ERROR)
+				json_encode($this->write([]), flags: JSON_THROW_ON_ERROR)
 			);
 		}catch(\JsonException|\RuntimeException $e){
 			VeinMiner::getInstance()->getLogger()->logException($e);
@@ -215,19 +223,19 @@ final class PlayerPreferences{
 	 * @see VeinMiner#getPlayerDataDirectory()
 	 */
 	public function readFromFile(string $directory) : void{
-		if(!\is_dir($directory)) {
+		if(!is_dir($directory)){
 			throw new \InvalidArgumentException("Provided directory is not a directory");
 		}
 		$file = Path::join($directory, $this->player . '.json');
-		if(!\file_exists($file)) {
+		if(!file_exists($file)){
 			return;
 		}
 
 		try{
-			$this->read(\json_decode(\file_get_contents($file), true, flags: \JSON_THROW_ON_ERROR));
-		}catch(\JsonException $e) {
+			$this->read(json_decode(file_get_contents($file), true, flags: JSON_THROW_ON_ERROR));
+		}catch(\JsonException $e){
 			VeinMiner::getInstance()->getLogger()->warning('Could not read player data for user ' . $this->player . '. Invalid file format. Deleting...');
-			\unlink($file);
+			unlink($file);
 		}
 	}
 

@@ -13,6 +13,7 @@ use jasonwynn10\VeinMiner\VeinMiner;
 use pocketmine\block\Block;
 use pocketmine\utils\SingletonTrait;
 use Ramsey\Collection\Set;
+use function count;
 
 /**
  * A {@link VeinMiningPattern} implementation that "pulsates" from the origin outwards. Every
@@ -28,7 +29,7 @@ use Ramsey\Collection\Set;
  * @author Parker Hawke - 2008Choco
  */
 final class PatternThorough implements VeinMiningPattern{
-	use SingletonTrait{
+	use SingletonTrait {
 		reset as private _reset; // don't let someone delete our instance
 		setInstance as private _setInstance; // don't let someone set our instance
 	}
@@ -46,7 +47,7 @@ final class PatternThorough implements VeinMiningPattern{
 		$maxVeinSize = $algorithmConfig->getMaxVeinSize();
 		$facesToMine = PatternUtils::getFacesToMine($algorithmConfig);
 
-		while(\count($blocks) < $maxVeinSize){
+		while(count($blocks) < $maxVeinSize){
 			$trackedBlocks = new \CachingIterator($blocks);
 			while($trackedBlocks->hasNext() && $blocks->count() + $this->blockBuffer->count() < $maxVeinSize){
 				$trackedBlocks->next();
@@ -64,7 +65,7 @@ final class PatternThorough implements VeinMiningPattern{
 				}
 			}
 
-			if($this->blockBuffer->count() === 0) {
+			if($this->blockBuffer->count() === 0){
 				break;
 			}
 

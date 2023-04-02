@@ -12,7 +12,7 @@ interface EconomyModifier{
 	 * Check whether the provided player should have money withdrawn from their
 	 * account before vein mining.
 	 *
-	 * @param Player $player the player to check
+	 * @param Player          $player the player to check
 	 * @param AlgorithmConfig $config the relevant algorithm config (if necessary)
 	 *
 	 * @return true if money should be withdrawn, false otherwise
@@ -23,7 +23,7 @@ interface EconomyModifier{
 	 * Check whether or not the provided player has a sufficient amount of money
 	 * to be charged.
 	 *
-	 * @param Player $player the player to check
+	 * @param Player          $player the player to check
 	 * @param AlgorithmConfig $config the relevant algorithm config (if necessary)
 	 *
 	 * @return true if the player has a sufficient amount of money, false otherwise
@@ -33,7 +33,7 @@ interface EconomyModifier{
 	/**
 	 * Charge the specified player.
 	 *
-	 * @param Player $player the player to check
+	 * @param Player          $player the player to check
 	 * @param AlgorithmConfig $config the relevant algorithm config (if necessary)
 	 */
 	public function charge(Player $player, AlgorithmConfig $config) : void;

@@ -46,7 +46,7 @@ class VeinBlockWildcard extends VeinBlock{
 		return "*";
 	}
 
-	public function isWildcard() : bool {
+	public function isWildcard() : bool{
 		return true;
 	}
 }

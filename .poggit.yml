@@ -7,9 +7,12 @@ projects:
     excludeDirs:
       - tests
       - .github
+      - build
+      - phpstan
     excludeFiles:
-      - .php-cs-fixer.php
       - .gitignore
       - CONTRIBUTING.md
       - SECURITY.md
+      - README.md
+      - LICENSE
 ...

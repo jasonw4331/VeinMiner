@@ -27,14 +27,14 @@ interface VeinMiningPattern{
 	 * <b>NOTE:</b> If null is added to the "blocks" set, a NullPointerException will be thrown and
 	 * the method will fail.
 	 *
-	 * @param Set<Block> $blocks a set of all blocks to break. Valid blocks should be added here. The "origin"
-	 * block passed to this method will be added automatically
-	 * @param VeinBlock $type the type of VeinBlock being vein mined
-	 * @param Block $origin the block where the vein mine was initiated
-	 * @param ToolCategory $category the tool category used to break the block
-	 * @param ToolTemplate|null $template the tool template used to break the block. May be null
-	 * @param AlgorithmConfig $algorithmConfig the algorithm configuration
-	 * @param MaterialAlias|null $alias an alias of the block being broken if one exists. May be null
+	 * @param Set<Block>         $blocks          a set of all blocks to break. Valid blocks should be added here. The "origin"
+	 *                                            block passed to this method will be added automatically
+	 * @param VeinBlock          $type            the type of VeinBlock being vein mined
+	 * @param Block              $origin          the block where the vein mine was initiated
+	 * @param ToolCategory       $category        the tool category used to break the block
+	 * @param ToolTemplate|null  $template        the tool template used to break the block. May be null
+	 * @param AlgorithmConfig    $algorithmConfig the algorithm configuration
+	 * @param MaterialAlias|null $alias           an alias of the block being broken if one exists. May be null
 	 */
 	public function allocateBlocks(Set $blocks, VeinBlock $type, Block $origin, ToolCategory $category, ?ToolTemplate $template, AlgorithmConfig $algorithmConfig, ?MaterialAlias $alias = null) : void;
 

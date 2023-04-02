@@ -7,12 +7,13 @@ use pocketmine\block\Block;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\utils\EnumTrait;
 use Ramsey\Collection\Map\AssociativeArrayMap;
+use function spl_object_hash;
 
 /**
  * @generate-registry-docblock
  */
 final class BlockCache{
-	use EnumTrait{
+	use EnumTrait {
 		__construct as Enum___construct;
 	}
 
@@ -27,19 +28,19 @@ final class BlockCache{
 		self::register(new self('BLOCK_DATA'));
 	}
 
-	private function __construct(string $enumName) {
+	private function __construct(string $enumName){
 		$this->Enum___construct($enumName);
 		$this->cached = new AssociativeArrayMap();
 	}
 
-	public function getOrCache(Block|BlockIdentifier $type, VeinBlock $defaultSupplier) : VeinBlock {
+	public function getOrCache(Block|BlockIdentifier $type, VeinBlock $defaultSupplier) : VeinBlock{
 		if($type instanceof Block)
 			$type = $type->getIdInfo();
-		return $this->cached->putIfAbsent(\spl_object_hash($type), $defaultSupplier) ?? $defaultSupplier;
+		return $this->cached->putIfAbsent(spl_object_hash($type), $defaultSupplier) ?? $defaultSupplier;
 	}
 
-	static function clear() : void {
-		foreach(self::getAll() as $blockCache) {
+	static function clear() : void{
+		foreach(self::getAll() as $blockCache){
 			$blockCache->cached->clear();
 		}
 	}

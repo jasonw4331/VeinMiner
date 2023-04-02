@@ -8,6 +8,8 @@ use pocketmine\block\Block;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\item\ItemBlock;
 use pocketmine\item\StringToItemParser;
+use function preg_match_all;
+use function strcmp;
 
 /**
  * Represents a block that may be vein mined. These blocks may or may not contain
@@ -77,12 +79,12 @@ abstract class VeinBlock{
 	 *
 	 * @return true if wildcard, false otherwise
 	 */
-	public function isWildcard() : bool {
+	public function isWildcard() : bool{
 		return false;
 	}
 
-	public function compareTo(VeinBlock $other) : int {
-		return \strcmp($this->asDataString(), $other->asDataString());
+	public function compareTo(VeinBlock $other) : int{
+		return strcmp($this->asDataString(), $other->asDataString());
 	}
 
 	/**
@@ -92,7 +94,7 @@ abstract class VeinBlock{
 	 *
 	 * @return VeinBlock the VeinBlock instance
 	 */
-	public static function get(Block|BlockIdentifier $data) : VeinBlock {
+	public static function get(Block|BlockIdentifier $data) : VeinBlock{
 		return BlockCache::MATERIAL()->getOrCache($data, new VeinBlockDatable($data));
 	}
 
@@ -117,7 +119,7 @@ abstract class VeinBlock{
 		if($value === '*')
 			return static::wildcard();
 
-		if(\preg_match_all(VeinMiner::$BLOCK_DATA_PATTERN, $value, $matches) === 0) {
+		if(preg_match_all(VeinMiner::$BLOCK_DATA_PATTERN, $value, $matches) === 0){
 			return null;
 		}
 
@@ -125,7 +127,7 @@ abstract class VeinBlock{
 
 		$data = StringToItemParser::getInstance()->parse($value);
 
-		if(!$data instanceof ItemBlock) {
+		if(!$data instanceof ItemBlock){
 			return null;
 		}
 
@@ -137,7 +139,7 @@ abstract class VeinBlock{
 	 *
 	 * @return VeinBlock the wildcard instance
 	 */
-	public static function wildcard() : VeinBlock {
+	public static function wildcard() : VeinBlock{
 		return VeinBlockWildcard::getInstance();
 	}
 
@@ -145,7 +147,7 @@ abstract class VeinBlock{
 	 * Clear the VeinBlock cache. This may slightly decrease performance until the cache returns
 	 * to a more populated state.
 	 */
-	public static function clearCache() : void {
+	public static function clearCache() : void{
 		BlockCache::clear();
 	}
 }

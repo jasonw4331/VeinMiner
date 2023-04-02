@@ -11,13 +11,13 @@ use pocketmine\world\Position;
  * @generate-registry-docblock
  */
 final class VBlockFace{
-	use EnumTrait{
+	use EnumTrait {
 		__construct as Enum___construct;
 	}
 
 	protected static function setup() : void{
 		self::registerAll(
-			// CORE DIRECTIONS
+		// CORE DIRECTIONS
 			new self('NORTH', 0, 0, -1),
 			new self('SOUTH', 0, 0, 1),
 			new self('WEST', -1, 0, 0),
@@ -74,7 +74,7 @@ final class VBlockFace{
 		return $this->zTranslation;
 	}
 
-	public function getRelative(Position $block) : Block {
+	public function getRelative(Position $block) : Block{
 		return $block->getWorld()->getBlockAt($block->getX() + $this->xTranslation, $block->getY() + $this->yTranslation, $block->getZ() + $this->zTranslation);
 	}
 

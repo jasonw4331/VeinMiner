@@ -13,9 +13,9 @@ use Ramsey\Collection\Set;
 
 final class VMEventFactory{
 
-	private function __construct(){}
+	private function __construct(){ }
 
-	public static function callPlayerVeinMineEvent(Player $player, VeinBlock $type, Item $item, ToolCategory $category, Set $blocks, VeinMiningPattern $pattern) : PlayerVeinMineEvent {
+	public static function callPlayerVeinMineEvent(Player $player, VeinBlock $type, Item $item, ToolCategory $category, Set $blocks, VeinMiningPattern $pattern) : PlayerVeinMineEvent{
 		$event = new PlayerVeinMineEvent($player, $type, $item, $category, $blocks, $pattern);
 		$event->call();
 		return $event;

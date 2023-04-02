@@ -16,7 +16,7 @@ use pocketmine\utils\SingletonTrait;
 final class EmptyEconomyModifier implements EconomyModifier{
 	use SingletonTrait;
 
-	private function __construct(){}
+	private function __construct(){ }
 
 	/**
 	 * @inheritDoc
@@ -35,5 +35,5 @@ final class EmptyEconomyModifier implements EconomyModifier{
 	/**
 	 * @inheritDoc
 	 */
-	public function charge(Player $player, AlgorithmConfig $config) : void {}
+	public function charge(Player $player, AlgorithmConfig $config) : void{ }
 }

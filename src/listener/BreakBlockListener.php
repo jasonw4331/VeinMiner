@@ -22,6 +22,8 @@ use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use pocketmine\world\sound\ItemBreakSound;
 use Ramsey\Collection\Set;
+use function count;
+use function max;
 
 final class BreakBlockListener implements Listener{
 
@@ -31,10 +33,10 @@ final class BreakBlockListener implements Listener{
 		$this->manager = $plugin->getVeinMinerManager();
 	}
 
-	public function onBlockBreak(BlockBreakEvent $event) : void {
+	public function onBlockBreak(BlockBreakEvent $event) : void{
 		$origin = $event->getBlock();
 
-		if($this->manager->getBlockToBeVeinMinedOrigin($origin) !== null) {
+		if($this->manager->getBlockToBeVeinMinedOrigin($origin) !== null){
 			if($this->plugin->getConfig()->get(VMConstants::CONFIG_COLLECT_ITEMS_AT_SOURCE, true) === true)
 				$event->setDrops([]);
 			return;
@@ -44,7 +46,7 @@ final class BreakBlockListener implements Listener{
 		$item = $event->getItem();
 
 		[$category, $toolTemplate] = ToolCategory::getWithTemplate($item);
-		if ($category === null || ($category !== ToolCategory::$HAND && $toolTemplate === null)) {
+		if($category === null || ($category !== ToolCategory::$HAND && $toolTemplate === null)){
 			return;
 		}
 
@@ -52,12 +54,12 @@ final class BreakBlockListener implements Listener{
 		$playerData = PlayerPreferences::get($player);
 		$activation = $playerData->getActivationStrategy();
 		$algorithmConfig = $toolTemplate !== null ? $toolTemplate->getConfig() : $category->getConfig();
-		if (!$activation->isValid($player)
+		if(!$activation->isValid($player)
 			|| !$category->hasPermission($player)
 			|| $this->manager->isDisabledGameMode($player->getGameMode())
 			|| $playerData->isVeinMinerDisabled($category)
 			|| $algorithmConfig->isDisabledWorld($origin->getPosition()->getWorld())
-			|| !ItemValidator::isValid($item, $category)) {
+			|| !ItemValidator::isValid($item, $category)){
 			return;
 		}
 
@@ -68,8 +70,8 @@ final class BreakBlockListener implements Listener{
 
 		// Economy check
 		$economy = $this->plugin->getEconomyModifier();
-		if(!$economy->shouldCharge($player, $algorithmConfig)) { // attempt charge first then handle fail case
-			if(!$economy->hasSufficientBalance($player, $algorithmConfig)) {
+		if(!$economy->shouldCharge($player, $algorithmConfig)){ // attempt charge first then handle fail case
+			if(!$economy->hasSufficientBalance($player, $algorithmConfig)){
 				$player->sendMessage(TextFormat::GRAY . 'You have insufficient funds to vein mine (Required: ' . TextFormat::YELLOW . $algorithmConfig->getCost() . TextFormat::GRAY . ')');
 				return;
 			}
@@ -87,7 +89,7 @@ final class BreakBlockListener implements Listener{
 		$pattern->allocateBlocks($blocks, $originVeinBlock, $origin, $category, $toolTemplate, $algorithmConfig, $this->manager->getAliasFor($origin));
 		/** @var Set<Block> $blocks */
 		$blocks = $blocks->filter(static fn(Block $block) => !$block instanceof Air);
-		if(\count($blocks) < 1){
+		if(count($blocks) < 1){
 			return;
 		}
 
@@ -99,14 +101,14 @@ final class BreakBlockListener implements Listener{
 
 		// Apply metadata to all blocks to be vein mined and all other relevant objects/entities
 		$this->manager->setPlayerVeinMining($player);
-		foreach($blocks as $block) {
+		foreach($blocks as $block){
 			$this->manager->setBlockToBeVeinMined($block, $origin);
 		}
 
 		// Actually destroying the allocated blocks
 		$maxDurability = $item instanceof Tool ? ($item->getMaxDurability() - ($this->plugin->getConfig()->get(VMConstants::CONFIG_REPAIR_FRIENDLY_VEINMINER, false) ? 1 : 0)) : 0;
-		$hungerModifier = \max(0, $this->plugin->getConfig()->get(VMConstants::CONFIG_HUNGER_HUNGER_MODIFIER, 0)) * 0.025;
-		$minimumFoodLevel = \max(0, $this->plugin->getConfig()->get(VMConstants::CONFIG_HUNGER_MINIMUM_FOOD_LEVEL, 0));
+		$hungerModifier = max(0, $this->plugin->getConfig()->get(VMConstants::CONFIG_HUNGER_HUNGER_MODIFIER, 0)) * 0.025;
+		$minimumFoodLevel = max(0, $this->plugin->getConfig()->get(VMConstants::CONFIG_HUNGER_MINIMUM_FOOD_LEVEL, 0));
 
 		$hungryMessage = $this->plugin->getConfig()->get(VMConstants::CONFIG_HUNGER_HUNGRY_MESSAGE, '');
 		if($hungryMessage !== ''){
@@ -117,7 +119,7 @@ final class BreakBlockListener implements Listener{
 		foreach($blocks as $block){
 			$drops += $block->getDrops($event->getItem());
 			//apply hunger
-			if($hungerModifier > 0 && !$player->hasPermission(VMConstants::PERMISSION_FREE_HUNGER)) {
+			if($hungerModifier > 0 && !$player->hasPermission(VMConstants::PERMISSION_FREE_HUNGER)){
 				$this->applyHungerDebuff($player, $hungerModifier);
 
 				if($player->getHungerManager()->getFood() <= $minimumFoodLevel){
@@ -130,19 +132,19 @@ final class BreakBlockListener implements Listener{
 			}
 
 			//check for tool damage
-			if($maxDurability > 0 && $category != ToolCategory::$HAND) {
-				if($item->isNull()) {
+			if($maxDurability > 0 && $category != ToolCategory::$HAND){
+				if($item->isNull()){
 					break;
 				}
 
 				$meta = $item->getDamage();
-				if($meta >= $maxDurability) {
+				if($meta >= $maxDurability){
 					break;
 				}
 			}
 
 			// break the block
-			if($block !== $origin) {
+			if($block !== $origin){
 				$this->breakBlock($player, $block);
 			}
 		}
@@ -151,14 +153,14 @@ final class BreakBlockListener implements Listener{
 
 		// Remove applied metadata
 		$this->manager->removePlayerVeinMining($player);
-		foreach($blocks as $block) {
+		foreach($blocks as $block){
 			$this->manager->removeBlockToBeVeinMined($block);
 		}
 
 		// VEINMINE - DONE
 	}
 
-	private function breakBlock(Player $player, Block $block) : bool {
+	private function breakBlock(Player $player, Block $block) : bool{
 		$pos = $block->getPosition();
 
 		$player->removeCurrentWindow();

@@ -5,12 +5,14 @@ namespace jasonwynn10\VeinMiner\data\block;
 
 use pocketmine\block\Block;
 use pocketmine\block\BlockIdentifier;
+use function mb_strpos;
+use function mb_substr;
 
 class VeinBlockDatable extends VeinBlock{
 
 	private Block $data;
 
-	public function __construct(Block $data) {
+	public function __construct(Block $data){
 		$this->data = clone $data;
 	}
 
@@ -51,19 +53,19 @@ class VeinBlockDatable extends VeinBlock{
 		return $this->data->__toString();
 	}
 
-	public function equals(Object $obj) : bool{
-		if ($obj === $this) {
+	public function equals(object $obj) : bool{
+		if($obj === $this){
 			return true;
 		}
-		if (!($obj instanceof VeinBlockDatable)) {
+		if(!($obj instanceof VeinBlockDatable)){
 			return false;
 		}
 
 		return $this->data->getIdInfo() === $obj->getBlockData();
 	}
 
-	public function toString() : string {
+	public function toString() : string{
 		$dataString = $this->asDataString();
-		return "{VeinBlockDatable:{\"Type\":\"" . $this->data->getName() . "\",\"Data\":\"" . \mb_substr($dataString, \mb_strpos($dataString, '[')) . "\"}}";
+		return "{VeinBlockDatable:{\"Type\":\"" . $this->data->getName() . "\",\"Data\":\"" . mb_substr($dataString, mb_strpos($dataString, '[')) . "\"}}";
 	}
 }

@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace jasonwynn10\VeinMiner\api;
 
 use jasonwynn10\VeinMiner\utils\VMConstants;
@@ -18,7 +19,7 @@ final class ActivationStrategy{
 	/** @var callable $callable */
 	private $callable;
 
-	protected static function setup() : void {
+	protected static function setup() : void{
 		self::registerAll(
 			new self('NONE', static fn($_) => false),
 			new self('SNEAK', static fn(Player $player) => $player->isSneaking()),
@@ -45,7 +46,7 @@ final class ActivationStrategy{
 	 *
 	 * @return true if valid to vein mine, false otherwise
 	 */
-	public function isValid(Player $player) : bool {
+	public function isValid(Player $player) : bool{
 		return ($this->callable)($player);
 	}
 
@@ -54,17 +55,17 @@ final class ActivationStrategy{
 	 *
 	 * @return self the default activation strategy
 	 */
-	public static function getDefaultActivationStrategy() : self {
+	public static function getDefaultActivationStrategy() : self{
 		$plugin = VeinMiner::getInstance();
 
 		$strategyName = $plugin->getConfig()->get(VMConstants::CONFIG_DEFAULT_ACTIVATION_STRATEGY, null);
-		if ($strategyName === null) {
+		if($strategyName === null){
 			return self::SNEAK();
 		}
 
 		try{
 			$strategy = self::__callStatic($strategyName, []);
-		}catch(\Error $e) {
+		}catch(\Error $e){
 			$strategy = self::SNEAK();
 		}
 		return $strategy;

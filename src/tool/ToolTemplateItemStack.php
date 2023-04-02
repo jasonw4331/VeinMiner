@@ -5,6 +5,8 @@ namespace jasonwynn10\VeinMiner\tool;
 
 use jasonwynn10\VeinMiner\data\AlgorithmConfig;
 use pocketmine\item\Item;
+use function array_diff;
+use function count;
 
 final class ToolTemplateItemStack extends ToolTemplate{
 	private AlgorithmConfig $config;
@@ -12,11 +14,11 @@ final class ToolTemplateItemStack extends ToolTemplate{
 	/**
 	 * Construct a new ToolTemplate with a specific type, name and lore.
 	 *
-	 * @param ToolCategory $category the category to which this template belongs
-	 * @param Item $type the type for which to check
-	 * @param AlgorithmConfig|null $config the algorithm configuration for this template
-	 * @param string|null $name the name for which to check (null if none)
-	 * @param array|null $lore the lore for which to check (null if none)
+	 * @param ToolCategory         $category the category to which this template belongs
+	 * @param Item                 $type     the type for which to check
+	 * @param AlgorithmConfig|null $config   the algorithm configuration for this template
+	 * @param string|null          $name     the name for which to check (null if none)
+	 * @param array|null           $lore     the lore for which to check (null if none)
 	 */
 	public function __construct(private ToolCategory $category, private Item $type, ?AlgorithmConfig $config = null, private ?string $name = null, private ?array $lore = null){
 		$this->config = $config ?? clone $category->getConfig();
@@ -53,15 +55,15 @@ final class ToolTemplateItemStack extends ToolTemplate{
 	}
 
 	public function matches(Item $item) : bool{
-		if (!$item->equals($this->type, false)) {
+		if(!$item->equals($this->type, false)){
 			return false;
 		}
 
-		if ($this->name != null && ($this->name != $item->getName())) {
+		if($this->name != null && ($this->name != $item->getName())){
 			return false;
 		}
 
-		return $this->lore === null || \count(\array_diff($this->lore, $item->getLore())) === 0;
+		return $this->lore === null || count(array_diff($this->lore, $item->getLore())) === 0;
 	}
 
 	public function getConfig() : ?AlgorithmConfig{
@@ -72,7 +74,7 @@ final class ToolTemplateItemStack extends ToolTemplate{
 		return $this->category;
 	}
 
-	public function __toString() : string {
+	public function __toString() : string{
 		return $this->getType()->__toString();
 	}
 }

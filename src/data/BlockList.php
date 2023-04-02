@@ -14,7 +14,7 @@ use Ramsey\Collection\Set;
  *
  * @author Parker Hawke - 2008Choco
  */
-final class BlockList implements IteratorAggregate,\Countable {
+final class BlockList implements IteratorAggregate, \Countable{
 
 	/** @var Set<VeinBlock> $blocks */
 	private Set $blocks;
@@ -27,7 +27,7 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 */
 	public function __construct(BlockList ...$lists){
 		$this->blocks = new Set(VeinBlock::class);
-		foreach($lists as $list) {
+		foreach($lists as $list){
 			$this->blocks = $this->blocks->merge($list->blocks);
 		}
 	}
@@ -39,8 +39,8 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 *
 	 * @return void the VeinBlock added to this list
 	 */
-	public function add(VeinBlock|Block|BlockIdentifier $block) : void {
-		if($block instanceof BlockIdentifier || $block instanceof Block) {
+	public function add(VeinBlock|Block|BlockIdentifier $block) : void{
+		if($block instanceof BlockIdentifier || $block instanceof Block){
 			$block = VeinBlock::get($block);
 		}
 		$this->blocks->add($block);
@@ -54,8 +54,8 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 *
 	 * @return void if at least one block was added, false otherwise
 	 */
-	public function addAll(iterable $values) : void {
-		foreach($values as $block) {
+	public function addAll(iterable $values) : void{
+		foreach($values as $block){
 			$this->add($block);
 		}
 	}
@@ -65,8 +65,8 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 *
 	 * @param VeinBlock|BlockIdentifier $block the block to remove
 	 */
-	public function remove(VeinBlock|BlockIdentifier $block) : void {
-		if($block instanceof BlockIdentifier) {
+	public function remove(VeinBlock|BlockIdentifier $block) : void{
+		if($block instanceof BlockIdentifier){
 			$block = VeinBlock::get($block);
 		}
 		$this->blocks->remove($block);
@@ -79,8 +79,8 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 *
 	 * @return true if present, false otherwise
 	 */
-	public function contains(VeinBlock|BlockIdentifier $data) : bool {
-		if($data instanceof BlockIdentifier) {
+	public function contains(VeinBlock|BlockIdentifier $data) : bool{
+		if($data instanceof BlockIdentifier){
 			return $this->containsOnPredicate(static fn(VeinBlock $block) => $block->encapsulates($data));
 		}
 		return $this->blocks->contains($data);
@@ -93,7 +93,7 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 *
 	 * @return true if present, false otherwise
 	 */
-	public function containsExact(BlockIdentifier $data) : bool {
+	public function containsExact(BlockIdentifier $data) : bool{
 		return $this->containsOnPredicate(static fn(VeinBlock $block) => $block->getBlockData() === $data);
 	}
 
@@ -102,7 +102,7 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 *
 	 * @return true if wildcarded, false otherwise
 	 */
-	public function containsWildcard() : bool {
+	public function containsWildcard() : bool{
 		return $this->containsOnPredicate(static fn(VeinBlock $block) => $block->isWildcard($block));
 	}
 
@@ -115,18 +115,18 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 *
 	 * @return VeinBlock|null the first encapsulating VeinBlock for this list. null if none
 	 */
-	public function getVeinBlock(BlockIdentifier $data) : ?VeinBlock {
-		foreach($this->blocks as $block) {
-			if($block->encapsulates($data)) {
+	public function getVeinBlock(BlockIdentifier $data) : ?VeinBlock{
+		foreach($this->blocks as $block){
+			if($block->encapsulates($data)){
 				return $block;
 			}
 		}
 		return null;
 	}
 
-	private function containsOnPredicate(callable $predicate) : bool {
-		foreach($this->blocks as $block) {
-			if($predicate($block)) {
+	private function containsOnPredicate(callable $predicate) : bool{
+		foreach($this->blocks as $block){
+			if($predicate($block)){
 				return true;
 			}
 		}
@@ -138,18 +138,18 @@ final class BlockList implements IteratorAggregate,\Countable {
 	 *
 	 * @return int the list size
 	 */
-	public function count() : int {
+	public function count() : int{
 		return $this->blocks->count();
 	}
 
 	/**
 	 * Clear the contents of this list.
 	 */
-	public function clear() : void {
+	public function clear() : void{
 		$this->blocks->clear();
 	}
 
-	public function getIterator() : array {
+	public function getIterator() : array{
 		return $this->blocks->toArray();
 	}
 }

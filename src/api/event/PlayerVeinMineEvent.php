@@ -13,10 +13,10 @@ use pocketmine\item\Item;
 use pocketmine\player\Player;
 use Ramsey\Collection\Set;
 
-final class PlayerVeinMineEvent extends Event implements Cancellable {
+final class PlayerVeinMineEvent extends Event implements Cancellable{
 	use CancellableTrait;
 
-	public function __construct(private Player $player, private VeinBlock $type, private Item $item, private ToolCategory $category, private Set $blocks, private VeinMiningPattern $pattern){}
+	public function __construct(private Player $player, private VeinBlock $type, private Item $item, private ToolCategory $category, private Set $blocks, private VeinMiningPattern $pattern){ }
 
 	public function getBlocks() : Set{
 		return $this->blocks;

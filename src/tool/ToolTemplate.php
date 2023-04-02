@@ -43,7 +43,7 @@ abstract class ToolTemplate{
 	 *
 	 * @return callable the template predicate
 	 */
-	public function asPredicate() : callable {
+	public function asPredicate() : callable{
 		return [$this, 'matches'];
 	}
 

@@ -14,6 +14,7 @@ use SOFe\Capital\Schema\Complete;
 use SOFe\InfoAPI\AnonInfo;
 use SOFe\InfoAPI\InfoAPI;
 use SOFe\InfoAPI\PlayerInfo;
+use function class_exists;
 
 /**
  * An implementation of {@link EconomyModifier} to make use of a Capital-supported
@@ -23,12 +24,12 @@ use SOFe\InfoAPI\PlayerInfo;
  */
 final class CapitalBasedEconomyModifier implements EconomyModifier{
 
-	private CONST CAPITAL_VERSION = '0.1.2';
+	private const CAPITAL_VERSION = '0.1.2';
 
 	private Complete $selector;
 
-	public function __construct() {
-		Capital::api(self::CAPITAL_VERSION, function(Capital $api) {
+	public function __construct(){
+		Capital::api(self::CAPITAL_VERSION, function(Capital $api){
 			$this->selector = $api->completeConfig(null); // use null to get the default schema from Capital
 		});
 	}
@@ -49,7 +50,8 @@ final class CapitalBasedEconomyModifier implements EconomyModifier{
 	public function hasSufficientBalance(Player $player, AlgorithmConfig $config) : bool{
 		$money = (int) InfoAPI::resolve('{money}', new class([
 			"speaker" => new PlayerInfo($player),
-		]) extends AnonInfo {});
+		]) extends AnonInfo{
+		});
 		return $money >= $config->getCost();
 	}
 
@@ -57,8 +59,8 @@ final class CapitalBasedEconomyModifier implements EconomyModifier{
 	 * @inheritDoc
 	 */
 	public function charge(Player $player, AlgorithmConfig $config) : void{
-		Capital::api(self::CAPITAL_VERSION, function(Capital $api) use ($player, $config) {
-			try {
+		Capital::api(self::CAPITAL_VERSION, function(Capital $api) use ($player, $config){
+			try{
 				yield from $api->takeMoney(
 					VeinMiner::getInstance()->getName(),
 					$player,
@@ -66,7 +68,7 @@ final class CapitalBasedEconomyModifier implements EconomyModifier{
 					(int) $config->getCost() * 100, // round up to int
 					new LabelSet(["reason" => "VeinMiner usage fee"]),
 				);
-			} catch(CapitalException $e) {
+			}catch(CapitalException $e){
 				$player->sendMessage("[VeinMiner] An error occurred while charging your account: " . $e->getMessage());
 			}
 		});
@@ -78,6 +80,6 @@ final class CapitalBasedEconomyModifier implements EconomyModifier{
 	 * @return true if economy is enabled, false otherwise
 	 */
 	public function hasEconomyPlugin() : bool{
-		return \class_exists(Capital::class);
+		return class_exists(Capital::class);
 	}
 }

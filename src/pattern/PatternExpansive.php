@@ -27,7 +27,7 @@ use Ramsey\Collection\Set;
  * @author Parker Hawke - 2008Choco
  */
 final class PatternExpansive implements VeinMiningPattern{
-	use SingletonTrait{
+	use SingletonTrait {
 		reset as private _reset; // don't let someone delete our instance
 		setInstance as private _setInstance; // don't let someone set our instance
 	}
@@ -50,16 +50,16 @@ final class PatternExpansive implements VeinMiningPattern{
 		$maxVeinSize = $algorithmConfig->getMaxVeinSize();
 		$facesToMine = PatternUtils::getFacesToMine($algorithmConfig);
 
-		while($blocks->count() < $maxVeinSize) {
-			foreach($this->recent as $current) {
-				foreach($facesToMine as $face) {
+		while($blocks->count() < $maxVeinSize){
+			foreach($this->recent as $current){
+				foreach($facesToMine as $face){
 					$relative = $face->getRelative($current->getPosition());
 
-					if($blocks->contains($relative) || !PatternUtils::isOfType($type, $origin, $alias, $relative)) {
+					if($blocks->contains($relative) || !PatternUtils::isOfType($type, $origin, $alias, $relative)){
 						continue;
 					}
 
-					if($blocks->count() + $this->buffer->count() >= $maxVeinSize) {
+					if($blocks->count() + $this->buffer->count() >= $maxVeinSize){
 						continue 2;
 					}
 
@@ -67,12 +67,12 @@ final class PatternExpansive implements VeinMiningPattern{
 				}
 			}
 
-			if($this->buffer->count() === 0) {
+			if($this->buffer->count() === 0){
 				break;
 			}
 
 			$this->recent->clear();
-			foreach($this->buffer as $block) {
+			foreach($this->buffer as $block){
 				$this->recent->add($block);
 				$blocks->add($block);
 			}

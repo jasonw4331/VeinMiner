@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace jasonwynn10\VeinMiner\pattern;
 
+use function is_string;
+
 final class PatternRegistry{
 
 	/** @var VeinMiningPattern[] $patterns */
@@ -13,7 +15,7 @@ final class PatternRegistry{
 	 *
 	 * @param VeinMiningPattern $pattern the pattern to register
 	 */
-	public function registerPattern(VeinMiningPattern $pattern) : void {
+	public function registerPattern(VeinMiningPattern $pattern) : void{
 		$this->patterns[(string) $pattern->getKey()] = $pattern;
 	}
 
@@ -31,7 +33,7 @@ final class PatternRegistry{
 	/**
 	 * Get the pattern associated with the given key or default if one is not registered.
 	 *
-	 * @param string $key the key of the pattern to retrieve
+	 * @param string            $key            the key of the pattern to retrieve
 	 * @param VeinMiningPattern $defaultPattern the default pattern in the case the key is not registered
 	 *
 	 * @return VeinMiningPattern the pattern. The default pattern if no pattern matches the given key
@@ -45,8 +47,8 @@ final class PatternRegistry{
 	 *
 	 * @param string|VeinMiningPattern $pattern the pattern to unregister
 	 */
-	public function unregisterPattern(string|VeinMiningPattern $pattern) : void {
-		unset($this->patterns[\is_string($pattern) ? $pattern : $pattern->getKey()]);
+	public function unregisterPattern(string|VeinMiningPattern $pattern) : void{
+		unset($this->patterns[is_string($pattern) ? $pattern : $pattern->getKey()]);
 	}
 
 	/**
