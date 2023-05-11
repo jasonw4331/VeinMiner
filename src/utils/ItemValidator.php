@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\utils;
+namespace jasonw4331\VeinMiner\utils;
 
-use jasonwynn10\VeinMiner\tool\ToolCategory;
-use jasonwynn10\VeinMiner\tool\ToolTemplate;
+use jasonw4331\VeinMiner\tool\ToolCategory;
+use jasonw4331\VeinMiner\tool\ToolTemplate;
 use pocketmine\item\Item;
 use function array_filter;
 use function count;

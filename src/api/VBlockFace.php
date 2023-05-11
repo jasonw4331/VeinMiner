@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\api;
+namespace jasonw4331\VeinMiner\api;
 
 use pocketmine\block\Block;
 use pocketmine\utils\EnumTrait;

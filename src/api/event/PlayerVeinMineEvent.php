@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\api\event;
+namespace jasonw4331\VeinMiner\api\event;
 
-use jasonwynn10\VeinMiner\data\block\VeinBlock;
-use jasonwynn10\VeinMiner\pattern\VeinMiningPattern;
-use jasonwynn10\VeinMiner\tool\ToolCategory;
+use jasonw4331\VeinMiner\data\block\VeinBlock;
+use jasonw4331\VeinMiner\pattern\VeinMiningPattern;
+use jasonw4331\VeinMiner\tool\ToolCategory;
 use pocketmine\event\Cancellable;
 use pocketmine\event\CancellableTrait;
 use pocketmine\event\Event;

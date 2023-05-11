@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\economy;
+namespace jasonw4331\VeinMiner\economy;
 
-use jasonwynn10\VeinMiner\data\AlgorithmConfig;
-use jasonwynn10\VeinMiner\utils\VMConstants;
-use jasonwynn10\VeinMiner\VeinMiner;
+use jasonw4331\VeinMiner\data\AlgorithmConfig;
+use jasonw4331\VeinMiner\utils\VMConstants;
+use jasonw4331\VeinMiner\VeinMiner;
 use pocketmine\player\Player;
 use SOFe\Capital\Capital;
 use SOFe\Capital\CapitalException;
@@ -20,7 +20,7 @@ use function class_exists;
  * An implementation of {@link EconomyModifier} to make use of a Capital-supported
  * economy plugin.
  *
- * @author Jason Wynn - jasonwynn10
+ * @author Jason Wynn - jasonw4331
  */
 final class CapitalBasedEconomyModifier implements EconomyModifier{
 

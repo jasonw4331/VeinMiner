@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\economy;
+namespace jasonw4331\VeinMiner\economy;
 
-use jasonwynn10\VeinMiner\data\AlgorithmConfig;
+use jasonw4331\VeinMiner\data\AlgorithmConfig;
 use pocketmine\player\Player;
 use pocketmine\utils\SingletonTrait;
 

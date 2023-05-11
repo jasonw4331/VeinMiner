@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\commands;
+namespace jasonw4331\VeinMiner\commands;
 
-use jasonwynn10\VeinMiner\api\ActivationStrategy;
-use jasonwynn10\VeinMiner\data\PlayerPreferences;
-use jasonwynn10\VeinMiner\tool\ToolCategory;
-use jasonwynn10\VeinMiner\tool\ToolTemplateItemStack;
-use jasonwynn10\VeinMiner\utils\NamespacedKey;
-use jasonwynn10\VeinMiner\utils\VMConstants;
+use jasonw4331\VeinMiner\api\ActivationStrategy;
+use jasonw4331\VeinMiner\data\PlayerPreferences;
+use jasonw4331\VeinMiner\tool\ToolCategory;
+use jasonw4331\VeinMiner\tool\ToolTemplateItemStack;
+use jasonw4331\VeinMiner\utils\NamespacedKey;
+use jasonw4331\VeinMiner\utils\VMConstants;
 use pocketmine\block\Block;
 use pocketmine\command\Command;
 use pocketmine\command\CommandExecutor;
@@ -72,7 +72,7 @@ final class VeinMinerCommand implements CommandExecutor, PluginOwned{
 			$sender->sendMessage(TextFormat::GOLD . 'Version: ' . TextFormat::WHITE . $description->getVersion() . $this->getUpdateSuffix());
 			$sender->sendMessage(TextFormat::GOLD . 'Developer: ' . TextFormat::WHITE . $description->getAuthors()[0]);
 			$sender->sendMessage(TextFormat::GOLD . 'Plugin page: ' . TextFormat::WHITE . $description->getWebsite());
-			$sender->sendMessage(TextFormat::GOLD . 'Report bugs to: ' . TextFormat::WHITE . 'https://github.com/jasonwynn10/VeinMiner/issues');
+			$sender->sendMessage(TextFormat::GOLD . 'Report bugs to: ' . TextFormat::WHITE . 'https://github.com/jasonw4331/VeinMiner/issues');
 			$sender->sendmessage('');
 			$sender->sendmessage($headerFooter);
 		}// Toggle subcommand

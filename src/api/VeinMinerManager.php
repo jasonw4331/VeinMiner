@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\api;
+namespace jasonw4331\VeinMiner\api;
 
-use jasonwynn10\VeinMiner\data\AlgorithmConfig;
-use jasonwynn10\VeinMiner\data\block\VeinBlock;
-use jasonwynn10\VeinMiner\data\BlockList;
-use jasonwynn10\VeinMiner\data\MaterialAlias;
-use jasonwynn10\VeinMiner\tool\ToolCategory;
-use jasonwynn10\VeinMiner\tool\ToolTemplateItemStack;
-use jasonwynn10\VeinMiner\utils\VMConstants;
-use jasonwynn10\VeinMiner\VeinMiner;
+use jasonw4331\VeinMiner\data\AlgorithmConfig;
+use jasonw4331\VeinMiner\data\block\VeinBlock;
+use jasonw4331\VeinMiner\data\BlockList;
+use jasonw4331\VeinMiner\data\MaterialAlias;
+use jasonw4331\VeinMiner\tool\ToolCategory;
+use jasonw4331\VeinMiner\tool\ToolTemplateItemStack;
+use jasonw4331\VeinMiner\utils\VMConstants;
+use jasonw4331\VeinMiner\VeinMiner;
 use pocketmine\block\Block;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\item\Item;

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\data;
+namespace jasonw4331\VeinMiner\data;
 
-use jasonwynn10\VeinMiner\utils\VMConstants;
+use jasonw4331\VeinMiner\utils\VMConstants;
 use pocketmine\Server;
 use pocketmine\world\World;
 use function array_diff;

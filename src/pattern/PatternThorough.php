@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\pattern;
+namespace jasonw4331\VeinMiner\pattern;
 
-use jasonwynn10\VeinMiner\data\AlgorithmConfig;
-use jasonwynn10\VeinMiner\data\block\VeinBlock;
-use jasonwynn10\VeinMiner\data\MaterialAlias;
-use jasonwynn10\VeinMiner\tool\ToolCategory;
-use jasonwynn10\VeinMiner\tool\ToolTemplate;
-use jasonwynn10\VeinMiner\utils\NamespacedKey;
-use jasonwynn10\VeinMiner\VeinMiner;
+use jasonw4331\VeinMiner\data\AlgorithmConfig;
+use jasonw4331\VeinMiner\data\block\VeinBlock;
+use jasonw4331\VeinMiner\data\MaterialAlias;
+use jasonw4331\VeinMiner\tool\ToolCategory;
+use jasonw4331\VeinMiner\tool\ToolTemplate;
+use jasonw4331\VeinMiner\utils\NamespacedKey;
+use jasonw4331\VeinMiner\VeinMiner;
 use pocketmine\block\Block;
 use pocketmine\utils\SingletonTrait;
 use Ramsey\Collection\Set;

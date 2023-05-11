@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\data\block;
+namespace jasonw4331\VeinMiner\data\block;
 
-use jasonwynn10\VeinMiner\VeinMiner;
+use jasonw4331\VeinMiner\VeinMiner;
 use pocketmine\block\Block;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\item\ItemBlock;

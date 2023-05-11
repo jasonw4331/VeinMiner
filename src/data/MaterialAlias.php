@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\data;
+namespace jasonw4331\VeinMiner\data;
 
 use IteratorAggregate;
-use jasonwynn10\VeinMiner\data\block\VeinBlock;
+use jasonw4331\VeinMiner\data\block\VeinBlock;
 use pocketmine\block\Air;
 use pocketmine\block\Block;
 use pocketmine\block\BlockIdentifier;

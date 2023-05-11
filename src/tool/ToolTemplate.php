@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\tool;
+namespace jasonw4331\VeinMiner\tool;
 
-use jasonwynn10\VeinMiner\data\AlgorithmConfig;
+use jasonw4331\VeinMiner\data\AlgorithmConfig;
 use pocketmine\item\Item;
 
 /**

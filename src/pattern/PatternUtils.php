@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\pattern;
+namespace jasonw4331\VeinMiner\pattern;
 
-use jasonwynn10\VeinMiner\api\VBlockFace;
-use jasonwynn10\VeinMiner\data\AlgorithmConfig;
-use jasonwynn10\VeinMiner\data\block\VeinBlock;
-use jasonwynn10\VeinMiner\data\MaterialAlias;
+use jasonw4331\VeinMiner\api\VBlockFace;
+use jasonw4331\VeinMiner\data\AlgorithmConfig;
+use jasonw4331\VeinMiner\data\block\VeinBlock;
+use jasonw4331\VeinMiner\data\MaterialAlias;
 use pocketmine\block\Block;
 
 final class PatternUtils{

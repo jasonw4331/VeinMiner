@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\tool;
+namespace jasonw4331\VeinMiner\tool;
 
-use jasonwynn10\VeinMiner\data\AlgorithmConfig;
-use jasonwynn10\VeinMiner\data\BlockList;
-use jasonwynn10\VeinMiner\utils\VMConstants;
-use jasonwynn10\VeinMiner\VeinMiner;
+use jasonw4331\VeinMiner\data\AlgorithmConfig;
+use jasonw4331\VeinMiner\data\BlockList;
+use jasonw4331\VeinMiner\utils\VMConstants;
+use jasonw4331\VeinMiner\VeinMiner;
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
 use pocketmine\permission\Permissible;

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\listener;
+namespace jasonw4331\VeinMiner\listener;
 
-use jasonwynn10\VeinMiner\data\PlayerPreferences;
-use jasonwynn10\VeinMiner\VeinMiner;
+use jasonw4331\VeinMiner\data\PlayerPreferences;
+use jasonw4331\VeinMiner\VeinMiner;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;

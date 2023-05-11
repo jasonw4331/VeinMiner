@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\utils;
+namespace jasonw4331\VeinMiner\utils;
 
-use jasonwynn10\VeinMiner\api\event\PlayerVeinMineEvent;
-use jasonwynn10\VeinMiner\data\block\VeinBlock;
-use jasonwynn10\VeinMiner\pattern\VeinMiningPattern;
-use jasonwynn10\VeinMiner\tool\ToolCategory;
+use jasonw4331\VeinMiner\api\event\PlayerVeinMineEvent;
+use jasonw4331\VeinMiner\data\block\VeinBlock;
+use jasonw4331\VeinMiner\pattern\VeinMiningPattern;
+use jasonw4331\VeinMiner\tool\ToolCategory;
 use pocketmine\item\Item;
 use pocketmine\player\Player;
 use Ramsey\Collection\Set;

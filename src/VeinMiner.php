@@ -1,24 +1,24 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner;
+namespace jasonw4331\VeinMiner;
 
-use jasonwynn10\VeinMiner\api\VeinMinerManager;
-use jasonwynn10\VeinMiner\commands\VeinMinerCommand;
-use jasonwynn10\VeinMiner\data\block\VeinBlock;
-use jasonwynn10\VeinMiner\data\PlayerPreferences;
-use jasonwynn10\VeinMiner\economy\CapitalBasedEconomyModifier;
-use jasonwynn10\VeinMiner\economy\EconomyModifier;
-use jasonwynn10\VeinMiner\economy\EmptyEconomyModifier;
-use jasonwynn10\VeinMiner\listener\BreakBlockListener;
-use jasonwynn10\VeinMiner\listener\PlayerDataListener;
-use jasonwynn10\VeinMiner\pattern\PatternExpansive;
-use jasonwynn10\VeinMiner\pattern\PatternRegistry;
-use jasonwynn10\VeinMiner\pattern\PatternThorough;
-use jasonwynn10\VeinMiner\pattern\VeinMiningPattern;
-use jasonwynn10\VeinMiner\tool\ToolCategory;
-use jasonwynn10\VeinMiner\utils\NamespacedKey;
-use jasonwynn10\VeinMiner\utils\VMConstants;
+use jasonw4331\VeinMiner\api\VeinMinerManager;
+use jasonw4331\VeinMiner\commands\VeinMinerCommand;
+use jasonw4331\VeinMiner\data\block\VeinBlock;
+use jasonw4331\VeinMiner\data\PlayerPreferences;
+use jasonw4331\VeinMiner\economy\CapitalBasedEconomyModifier;
+use jasonw4331\VeinMiner\economy\EconomyModifier;
+use jasonw4331\VeinMiner\economy\EmptyEconomyModifier;
+use jasonw4331\VeinMiner\listener\BreakBlockListener;
+use jasonw4331\VeinMiner\listener\PlayerDataListener;
+use jasonw4331\VeinMiner\pattern\PatternExpansive;
+use jasonw4331\VeinMiner\pattern\PatternRegistry;
+use jasonw4331\VeinMiner\pattern\PatternThorough;
+use jasonw4331\VeinMiner\pattern\VeinMiningPattern;
+use jasonw4331\VeinMiner\tool\ToolCategory;
+use jasonw4331\VeinMiner\utils\NamespacedKey;
+use jasonw4331\VeinMiner\utils\VMConstants;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;

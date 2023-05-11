@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\data;
+namespace jasonw4331\VeinMiner\data;
 
-use jasonwynn10\VeinMiner\api\ActivationStrategy;
-use jasonwynn10\VeinMiner\tool\ToolCategory;
-use jasonwynn10\VeinMiner\VeinMiner;
+use jasonw4331\VeinMiner\api\ActivationStrategy;
+use jasonw4331\VeinMiner\tool\ToolCategory;
+use jasonw4331\VeinMiner\VeinMiner;
 use pocketmine\player\IPlayer;
 use pocketmine\player\Player;
 use pocketmine\Server;

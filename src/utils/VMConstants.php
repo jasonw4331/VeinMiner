@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\utils;
+namespace jasonw4331\VeinMiner\utils;
 
 final class VMConstants{
 

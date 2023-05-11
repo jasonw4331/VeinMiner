@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\pattern;
+namespace jasonw4331\VeinMiner\pattern;
 
 use function is_string;
 

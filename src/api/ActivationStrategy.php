@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace jasonwynn10\VeinMiner\api;
+namespace jasonw4331\VeinMiner\api;
 
-use jasonwynn10\VeinMiner\utils\VMConstants;
-use jasonwynn10\VeinMiner\VeinMiner;
+use jasonw4331\VeinMiner\utils\VMConstants;
+use jasonw4331\VeinMiner\VeinMiner;
 use pocketmine\player\Player;
 use pocketmine\utils\EnumTrait;
 
